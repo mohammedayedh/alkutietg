@@ -1,0 +1,938 @@
+{% load static %}
+{% load translation_tags %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>{% block title %}{% trans 'مؤسسة الكتيع للتجارة والاستيراد' %}{% endblock %}</title>
+    
+    <!-- Bootstrap RTL/LTR -->
+    {% if LANGUAGE_CODE == 'ar' %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    {% else %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% endif %}
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #5A3A22;
+            --primary-medium: #7B5233;
+            --secondary-color: #B07A3F;
+            --bg-light: #F3EEE8;
+            --text-dark: #2E2E2E;
+            --white: #ffffff;
+        }
+        
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background: var(--white);
+            color: var(--text-dark);
+        }
+        
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(90, 58, 34, 0.08);
+            padding: 1rem 0;
+        }
+        
+        .navbar-toggler {
+            border: none !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none !important;
+        }
+        
+        /* Animated Hamburger Menu */
+        #checkbox {
+            display: none;
+        }
+        
+        .toggle {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition-duration: .5s;
+        }
+        
+        .bars {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            transition: all 0.5s ease;
+        }
+        
+        #bar2 {
+            transition-duration: .8s;
+        }
+        
+        #bar1,
+        #bar3 {
+            width: 70%;
+        }
+        
+        #checkbox:checked + .toggle .bars {
+            position: absolute;
+            transition-duration: .5s;
+        }
+        
+        #checkbox:checked + .toggle #bar2 {
+            transform: scaleX(0);
+            transition-duration: .5s;
+        }
+        
+        #checkbox:checked + .toggle #bar1 {
+            width: 100%;
+            transform: rotate(45deg);
+            transition-duration: .5s;
+            background: var(--secondary-color);
+        }
+        
+        #checkbox:checked + .toggle #bar3 {
+            width: 100%;
+            transform: rotate(-45deg);
+            transition-duration: .5s;
+            background: var(--secondary-color);
+        }
+        
+        #checkbox:checked + .toggle {
+            transition-duration: .5s;
+            transform: rotate(180deg);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-color) !important;
+            transition: all 0.3s;
+        }
+        
+        .navbar-brand:hover {
+            transform: translateY(-2px);
+        }
+        
+        .navbar-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            transition: all 0.3s;
+            filter: drop-shadow(0 1px 2px rgba(90, 58, 34, 0.1));
+        }
+        
+        .navbar-brand:hover .navbar-logo {
+            transform: scale(1.05);
+            filter: drop-shadow(0 2px 4px rgba(90, 58, 34, 0.2));
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-logo {
+                height: 40px;
+            }
+            
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            
+            .navbar-toggler {
+                border: none !important;
+                padding: 0 !important;
+            }
+            
+            .navbar-toggler-icon {
+                display: none;
+            }
+            
+            .toggle {
+                width: 35px !important;
+                height: 35px !important;
+                gap: 6px !important;
+            }
+            
+            .bars {
+                height: 2.5px !important;
+            }
+            
+            /* Elegant Dropdown Navigation */
+            .navbar-collapse {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                width: 100%;
+                max-width: 100%;
+                background: var(--white);
+                backdrop-filter: none;
+                border-radius: 0;
+                box-shadow: none;
+                z-index: 9999;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                padding: 0 0.75rem;
+                border: none;
+                margin: 0;
+            }
+            
+            .navbar-collapse.show {
+                max-height: 300px;
+                opacity: 1;
+                padding: 1rem 0.75rem 1.25rem;
+                box-shadow: 0 2px 10px rgba(90, 58, 34, 0.08);
+            }
+            
+            .navbar-collapse.collapsing {
+                max-height: 0;
+                opacity: 0;
+                padding: 0 0.75rem;
+            }
+            
+            .navbar-nav {
+                flex-direction: row !important;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                margin: 0 0 1rem 0 !important;
+                padding: 0 0.5rem;
+                gap: 0.25rem;
+                flex-wrap: nowrap !important;
+            }
+            
+            .nav-item {
+                flex: 1 1 25%;
+                text-align: center;
+                position: relative;
+                max-width: 25%;
+                min-width: 0;
+            }
+            
+            .nav-link {
+                padding: 0.75rem 0.15rem !important;
+                text-align: center;
+                color: var(--primary-color) !important;
+                font-weight: 600;
+                font-size: 0.7rem;
+                transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.35rem;
+                cursor: pointer;
+                border-radius: 15px;
+                position: relative;
+                opacity: 0.75;
+            }
+            
+            .nav-link i {
+                font-size: 1.5rem;
+                transition: all 0.4s ease;
+                color: var(--secondary-color);
+            }
+            
+            .nav-link:hover {
+                color: var(--primary-color) !important;
+                transform: translateY(-3px);
+                background: var(--bg-light);
+                opacity: 1;
+            }
+            
+            .nav-link:hover i {
+                transform: scale(1.2);
+                color: var(--primary-color);
+            }
+            
+            /* Active State */
+            .nav-item.active .nav-link {
+                color: var(--primary-color) !important;
+                background: var(--bg-light);
+                opacity: 1;
+            }
+            
+            .nav-item.active .nav-link i {
+                transform: scale(1.15);
+                color: var(--primary-color);
+                filter: drop-shadow(0 2px 4px rgba(90, 58, 34, 0.3));
+            }
+            
+            .nav-item.active .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 2px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 3px;
+                background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+                border-radius: 3px;
+                box-shadow: 0 2px 8px rgba(176, 122, 63, 0.5);
+            }
+            
+            /* Language Switcher in Mobile Menu */
+            .language-switcher-wrapper {
+                display: flex !important;
+                justify-content: center;
+                padding-top: 0.75rem;
+                border-top: 1px solid rgba(90, 58, 34, 0.1);
+                margin-top: 0.25rem;
+            }
+            
+            .language-toggle {
+                transform: scale(0.9);
+            }
+            
+            .display-3 {
+                font-size: 2rem !important;
+            }
+            
+            .display-4 {
+                font-size: 1.75rem !important;
+            }
+            
+            h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+            }
+            
+            .lead {
+                font-size: 1rem !important;
+            }
+            
+            .btn-lg {
+                padding: 0.6rem 1.5rem !important;
+                font-size: 1rem !important;
+            }
+            
+            .section-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            .section-title::after {
+                width: 60px !important;
+            }
+            
+            .card-body {
+                padding: 1.25rem !important;
+            }
+            
+            .card {
+                margin-bottom: 1rem;
+            }
+            
+            .py-5 {
+                padding-top: 2.5rem !important;
+                padding-bottom: 2.5rem !important;
+            }
+            
+            .mb-5 {
+                margin-bottom: 2rem !important;
+            }
+            
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            footer {
+                padding: 2rem 0 1rem !important;
+            }
+            
+            footer .col-md-4 {
+                margin-bottom: 2rem !important;
+                text-align: center;
+            }
+            
+            footer .footer-logo {
+                height: 50px !important;
+                margin: 0 auto !important;
+            }
+            
+            footer h5, footer h6 {
+                font-size: 1.1rem !important;
+            }
+            
+            footer p, footer li {
+                font-size: 0.9rem !important;
+            }
+            
+            .toggle-label {
+                width: 70px !important;
+                height: 32px !important;
+            }
+            
+            .toggle-switch {
+                width: 26px !important;
+                height: 26px !important;
+            }
+            
+            .lang-ar, .lang-en {
+                font-size: 11px !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .display-3 {
+                font-size: 1.5rem !important;
+            }
+            
+            h1 {
+                font-size: 1.5rem !important;
+            }
+            
+            h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            .btn-lg {
+                padding: 0.5rem 1.25rem !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .card-title {
+                font-size: 1.1rem !important;
+            }
+            
+            .card-text {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Keep 4 items in one row on small screens */
+            .navbar-collapse {
+                width: 98%;
+                padding: 1rem 0.5rem;
+            }
+            
+            .navbar-nav {
+                padding: 0 0.25rem !important;
+                gap: 0.15rem !important;
+                flex-wrap: nowrap !important;
+            }
+            
+            .nav-item {
+                flex: 1 1 25% !important;
+                max-width: 25% !important;
+                min-width: 0 !important;
+            }
+            
+            .nav-link {
+                padding: 0.6rem 0.1rem !important;
+                font-size: 0.65rem !important;
+                gap: 0.25rem !important;
+            }
+            
+            .nav-link i {
+                font-size: 1.3rem !important;
+            }
+        }
+        
+        footer .footer-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+        
+        /* Language Toggle Switch */
+        .language-toggle {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-toggle input[type="checkbox"] {
+            display: none;
+        }
+        
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            width: 80px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-medium));
+            border-radius: 50px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 3px 10px rgba(90, 58, 34, 0.3);
+            overflow: hidden;
+        }
+        
+        .toggle-label:hover {
+            box-shadow: 0 5px 15px rgba(90, 58, 34, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .toggle-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 8px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .lang-ar, .lang-en {
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .toggle-switch {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="checkbox"]:checked + .toggle-label {
+            background: linear-gradient(135deg, var(--secondary-color), #D4A574);
+        }
+        
+        input[type="checkbox"]:checked + .toggle-label .toggle-switch {
+            left: calc(100% - 33px);
+        }
+        
+        input[type="checkbox"]:not(:checked) + .toggle-label .lang-ar {
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        input[type="checkbox"]:checked + .toggle-label .lang-en {
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .toggle-label {
+                width: 70px;
+                height: 32px;
+            }
+            
+            .toggle-switch {
+                width: 26px;
+                height: 26px;
+            }
+            
+            .lang-ar, .lang-en {
+                font-size: 11px;
+            }
+        }
+        
+        .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem !important;
+            border-radius: 6px;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+            background: var(--bg-light);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #5A3A22, #B07A3F);
+            border: none;
+            color: var(--white);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            transition: all 0.3s;
+            border-radius: 6px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(176, 122, 63, 0.4);
+            background: linear-gradient(135deg, #7B5233, #B07A3F);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .card {
+            border-radius: 6px;
+            border: none;
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(90, 58, 34, 0.12);
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: var(--bg-light);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-link {
+            color: var(--bg-light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .text-secondary {
+            color: var(--secondary-color) !important;
+        }
+        
+        .bg-light-custom {
+            background: var(--bg-light) !important;
+        }
+        
+        .text-warning {
+            color: var(--secondary-color) !important;
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                <img src="{% static 'images/ibrahim k logo.png' %}" alt="{% trans 'مؤسسة الكتيع' %}" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <input type="checkbox" id="checkbox">
+                <label for="checkbox" class="toggle">
+                    <div class="bars" id="bar1"></div>
+                    <div class="bars" id="bar2"></div>
+                    <div class="bars" id="bar3"></div>
+                </label>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav {% if LANGUAGE_CODE == 'ar' %}me-auto{% else %}ms-auto{% endif %}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">
+                            <i class="fas fa-home"></i>
+                            <span>{% trans 'الرئيسية' %}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">
+                            <i class="fas fa-info-circle"></i>
+                            <span>{% trans 'من نحن' %}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'services' %}">
+                            <i class="fas fa-briefcase"></i>
+                            <span>{% trans 'خدماتنا' %}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">
+                            <i class="fas fa-envelope"></i>
+                            <span>{% trans 'تواصل معنا' %}</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Language Switcher -->
+                <div class="{% if LANGUAGE_CODE == 'ar' %}me-3{% else %}ms-3{% endif %} language-switcher-wrapper">
+                    <form action="{% url 'set_language' %}" method="post" id="languageForm">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ request.path }}">
+                        <input type="hidden" name="language" id="languageInput" value="{% if LANGUAGE_CODE == 'ar' %}en{% else %}ar{% endif %}">
+                        
+                        <div class="language-toggle">
+                            <input type="checkbox" id="languageSwitch" {% if LANGUAGE_CODE == 'en' %}checked{% endif %}>
+                            <label for="languageSwitch" class="toggle-label">
+                                <span class="toggle-inner">
+                                    <span class="lang-ar">ع</span>
+                                    <span class="lang-en">EN</span>
+                                </span>
+                                <span class="toggle-switch"></span>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{% static 'images/ibrahim k logo.png' %}" alt="{% trans 'مؤسسة الكتيع' %}" class="footer-logo {% if LANGUAGE_CODE == 'ar' %}me-3{% else %}ms-3{% endif %}">
+                    </div>
+                    <h5 class="text-secondary mb-3">{% trans 'مؤسسة الكتيع للتجارة والاستيراد' %}</h5>
+                    <p style="color: var(--bg-light); opacity: 0.9;">{% trans 'ريادة عالمية.. بجودة استثنائية' %}</p>
+                    <p class="small" style="opacity: 0.8;">{% trans 'من قلب اليمن، نصلكم بمنابع التجارة العالمية' %}</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="text-secondary mb-3">{% trans 'روابط سريعة' %}</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{% url 'home' %}" class="footer-link">{% trans 'الرئيسية' %}</a></li>
+                        <li class="mb-2"><a href="{% url 'about' %}" class="footer-link">{% trans 'من نحن' %}</a></li>
+                        <li class="mb-2"><a href="{% url 'services' %}" class="footer-link">{% trans 'خدماتنا' %}</a></li>
+                        <li class="mb-2"><a href="{% url 'contact' %}" class="footer-link">{% trans 'تواصل معنا' %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="text-secondary mb-3">{% trans 'تواصل معنا' %}</h6>
+                    <p class="small" style="opacity: 0.9;"><i class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'المقر الرئيسي: الجمهورية اليمنية' %}</p>
+                    
+                    <div class="mb-3">
+                        <p class="small mb-2" style="opacity: 0.9;">
+                            <i class="fas fa-phone {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'الهاتف' %}:
+                        </p>
+                        <p class="small mb-1" style="opacity: 0.85; {% if LANGUAGE_CODE == 'ar' %}padding-right: 1.5rem;{% else %}padding-left: 1.5rem;{% endif %}">
+                            <strong>{% trans 'اليمن' %}:</strong> <a href="tel:+967777794033" class="footer-link" style="text-decoration: none;">+967 777 794 033</a>
+                        </p>
+                        <p class="small mb-1" style="opacity: 0.85; {% if LANGUAGE_CODE == 'ar' %}padding-right: 1.5rem;{% else %}padding-left: 1.5rem;{% endif %}">
+                            <strong>{% trans 'الولايات المتحدة' %}:</strong> <a href="tel:+15743005038" class="footer-link" style="text-decoration: none;">+1 (574) 300-5038</a>
+                        </p>
+                    </div>
+                    
+                    <div class="mb-2">
+                        <p class="small mb-2" style="opacity: 0.9;">
+                            <i class="fab fa-whatsapp {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'واتساب' %}:
+                        </p>
+                        <p class="small mb-1" style="opacity: 0.85; {% if LANGUAGE_CODE == 'ar' %}padding-right: 1.5rem;{% else %}padding-left: 1.5rem;{% endif %}">
+                            <a href="https://wa.me/967777794033" target="_blank" class="footer-link" style="text-decoration: none;">
+                                <i class="fab fa-whatsapp {% if LANGUAGE_CODE == 'ar' %}me-1{% else %}ms-1{% endif %}"></i> +967 777 794 033
+                            </a>
+                        </p>
+                        <p class="small mb-1" style="opacity: 0.85; {% if LANGUAGE_CODE == 'ar' %}padding-right: 1.5rem;{% else %}padding-left: 1.5rem;{% endif %}">
+                            <a href="https://wa.me/15743005038" target="_blank" class="footer-link" style="text-decoration: none;">
+                                <i class="fab fa-whatsapp {% if LANGUAGE_CODE == 'ar' %}me-1{% else %}ms-1{% endif %}"></i> +1 (574) 300-5038
+                            </a>
+                        </p>
+                    </div>
+                    
+                    <p class="small mt-3" style="opacity: 0.9;"><i class="fas fa-globe {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'الأذرع الدولية:' %}</p>
+                    <ul class="list-unstyled small" style="opacity: 0.8;">
+                        <li>• {% trans 'الولايات المتحدة الأمريكية' %}</li>
+                        <li>• {% trans 'المملكة العربية السعودية' %}</li>
+                        <li>• {% trans 'الإمارات العربية المتحدة' %}</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(243, 238, 232, 0.2);">
+            <div class="text-center py-3">
+                <p class="mb-0 small" style="opacity: 0.8;">&copy; 2024 {% trans 'مؤسسة الكتيع للتجارة والاستيراد. جميع الحقوق محفوظة.' %}</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Hamburger Menu Sync -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.getElementById('checkbox');
+            const navbarCollapse = document.getElementById('navbarNav');
+            
+            if (checkbox && navbarCollapse) {
+                // عند الضغط على الـ checkbox
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                            toggle: true
+                        });
+                    } else {
+                        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) {
+                            bsCollapse.hide();
+                        }
+                    }
+                });
+                
+                // عند فتح/إغلاق القائمة من Bootstrap
+                navbarCollapse.addEventListener('shown.bs.collapse', function() {
+                    checkbox.checked = true;
+                });
+                
+                navbarCollapse.addEventListener('hidden.bs.collapse', function() {
+                    checkbox.checked = false;
+                });
+            }
+        });
+    </script>
+    
+    <!-- Language Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSwitch = document.getElementById('languageSwitch');
+            const languageForm = document.getElementById('languageForm');
+            const languageInput = document.getElementById('languageInput');
+            
+            if (languageSwitch && languageForm) {
+                languageSwitch.addEventListener('change', function() {
+                    // تحديث قيمة اللغة
+                    languageInput.value = this.checked ? 'en' : 'ar';
+                    
+                    // إضافة تأثير انتقالي سلس
+                    document.body.style.opacity = '0.95';
+                    
+                    // إرسال النموذج بعد تأخير قصير للأنيميشن
+                    setTimeout(function() {
+                        languageForm.submit();
+                    }, 200);
+                });
+            }
+        });
+    </script>
+    
+    <!-- Active Page Detection Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // الحصول على المسار الحالي
+            const currentPath = window.location.pathname;
+            
+            // الحصول على جميع عناصر القائمة
+            const navItems = document.querySelectorAll('.navbar-nav .nav-item');
+            
+            // إزالة الحالة النشطة من جميع العناصر
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // إضافة الحالة النشطة للصفحة الحالية
+            navItems.forEach(item => {
+                const link = item.querySelector('.nav-link');
+                if (link) {
+                    const href = link.getAttribute('href');
+                    
+                    // التحقق من تطابق المسار
+                    if (currentPath === href || 
+                        (currentPath === '/' && href.includes('home')) ||
+                        (currentPath.includes('/about') && href.includes('about')) ||
+                        (currentPath.includes('/services') && href.includes('services')) ||
+                        (currentPath.includes('/contact') && href.includes('contact'))) {
+                        item.classList.add('active');
+                    }
+                }
+            });
+            
+            // إغلاق القائمة عند النقر على أي رابط (للجوال)
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const navbarCollapse = document.getElementById('navbarNav');
+            const checkbox = document.getElementById('checkbox');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // إغلاق القائمة بعد تأخير قصير
+                    setTimeout(function() {
+                        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                            if (bsCollapse) {
+                                bsCollapse.hide();
+                            }
+                            if (checkbox) {
+                                checkbox.checked = false;
+                            }
+                        }
+                    }, 300);
+                });
+            });
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load translation_tags %}
+
+{% block title %}{% trans 'خدماتنا' %} - {% trans 'مؤسسة الكتيع' %}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="py-5" style="background: linear-gradient(135deg, #5A3A22, #B07A3F);">
+    <div class="container text-center text-white">
+        <h1 class="display-4 fw-bold">{% trans 'خدماتنا' %}</h1>
+        <p class="lead">{% trans 'حلول توريد نوعية تتجاوز التوقعات' %}</p>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="py-5" style="background: white;">
+    <div class="container">
+        <h2 class="section-title text-center">{% trans 'ما نقدمه' %}</h2>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                <div class="card h-100 border-0 shadow-sm hover-card" style="background: white;">
+                    {% if service.image %}
+                    <img src="{{ service.image.url }}" class="card-img-top" alt="{% get_field service 'title' %}" style="height: 250px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 250px; background: var(--bg-light);">
+                        <i class="fas fa-{{ service.icon|default:'box' }} fa-5x" style="color: var(--primary-color);"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body p-4">
+                        <h5 class="card-title" style="color: var(--primary-color);">{% get_field service 'title' %}</h5>
+                        <p class="card-text text-muted">{% get_field service 'description' %}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">{% trans 'لا توجد خدمات متاحة حالياً' %}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Partnerships -->
+{% if partnerships %}
+<section class="py-5 bg-light-custom">
+    <div class="container">
+        <h2 class="section-title text-center">{% trans 'شراكاتنا الاستراتيجية' %}</h2>
+        <p class="text-center text-muted mb-5">{% trans 'نفخر بشراكاتنا مع أفضل الشركات العالمية' %}</p>
+        <div class="row g-4">
+            {% for partnership in partnerships %}
+            <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                <div class="card h-100 border-0 shadow-sm text-center" style="background: white;">
+                    <div class="card-body p-4">
+                        {% if partnership.logo %}
+                        <img src="{{ partnership.logo.url }}" alt="{% get_field partnership 'name' %}" class="img-fluid mb-3" style="max-height: 100px;">
+                        {% else %}
+                        <div class="mb-3">
+                            <i class="fas fa-handshake fa-4x" style="color: var(--secondary-color);"></i>
+                        </div>
+                        {% endif %}
+                        <h5 class="card-title" style="color: var(--primary-color);">{% get_field partnership 'name' %}</h5>
+                        <p class="text-muted mb-2">{% get_field partnership 'country' %}</p>
+                        <p class="small">{% get_field partnership 'description' %}</p>
+                        {% if partnership.website %}
+                        <a href="{{ partnership.website }}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">
+                            <i class="fas fa-external-link-alt {% if LANGUAGE_CODE == 'ar' %}me-1{% else %}ms-1{% endif %}"></i>{% trans 'زيارة الموقع' %}
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Why Choose Us -->
+<section class="py-5" style="background: white;">
+    <div class="container">
+        <h2 class="section-title text-center">{% trans 'لماذا تختارنا؟' %}</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-certificate fa-4x" style="color: var(--primary-color);"></i>
+                    </div>
+                    <h5 style="color: var(--primary-color);">{% trans 'الرسمية والموثوقية' %}</h5>
+                    <p class="text-muted">{% trans 'مؤسسة مسجلة تعمل وفق أرقى بروتوكولات التجارة الرسمية' %}</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-star fa-4x" style="color: var(--secondary-color);"></i>
+                    </div>
+                    <h5 style="color: var(--primary-color);">{% trans 'الانتقائية الفائقة' %}</h5>
+                    <p class="text-muted">{% trans 'نعتمد معايير صارمة في اختيار مصادر التوريد' %}</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-globe fa-4x" style="color: var(--primary-medium);"></i>
+                    </div>
+                    <h5 style="color: var(--primary-color);">{% trans 'الانتشار الجغرافي' %}</h5>
+                    <p class="text-muted">{% trans 'قوة ميدانية في اليمن وأمريكا والسعودية والإمارات' %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5" style="background: linear-gradient(135deg, #5A3A22, #B07A3F);">
+    <div class="container text-center text-white">
+        <h2 class="mb-4">{% trans 'هل تحتاج إلى خدماتنا؟' %}</h2>
+        <p class="lead mb-4">{% trans 'تواصل معنا اليوم للحصول على استشارة مجانية' %}</p>
+        <a href="{% url 'contact' %}" class="btn btn-lg" style="background: white; color: var(--primary-color); font-weight: 600; padding: 0.75rem 2.5rem; border-radius: 6px;">
+            <i class="fas fa-comments {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'تحدث معنا' %}
+        </a>
+    </div>
+</section>
+
+<style>
+    .hover-card {
+        transition: all 0.3s;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+    }
+</style>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,209 @@
+# English translations for K. Trading & Importing Corp
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+
+# Admin
+msgid "مؤسسة الكتيع للتجارة والاستيراد"
+msgstr "K. Trading & Importing Corporation"
+
+msgid "لوحة التحكم"
+msgstr "Control Panel"
+
+msgid "إدارة الموقع"
+msgstr "Site Management"
+
+# Navigation
+msgid "مؤسسة الكتيع"
+msgstr "K. Trading Corp"
+
+msgid "الرئيسية"
+msgstr "Home"
+
+msgid "من نحن"
+msgstr "About Us"
+
+msgid "خدماتنا"
+msgstr "Our Services"
+
+msgid "تواصل معنا"
+msgstr "Contact Us"
+
+# Slogans
+msgid "ريادة عالمية.. بجودة استثنائية"
+msgstr "Global Leadership.. Exceptional Quality"
+
+msgid "من قلب اليمن، نصلكم بمنابع التجارة العالمية"
+msgstr "From the heart of Yemen, we connect you to the sources of global trade"
+
+# Footer
+msgid "روابط سريعة"
+msgstr "Quick Links"
+
+msgid "المقر الرئيسي: الجمهورية اليمنية"
+msgstr "Headquarters: Republic of Yemen"
+
+msgid "الأذرع الدولية:"
+msgstr "International Branches:"
+
+msgid "الولايات المتحدة الأمريكية"
+msgstr "United States of America"
+
+msgid "المملكة العربية السعودية"
+msgstr "Kingdom of Saudi Arabia"
+
+msgid "الإمارات العربية المتحدة"
+msgstr "United Arab Emirates"
+
+msgid "مؤسسة الكتيع للتجارة والاستيراد. جميع الحقوق محفوظة."
+msgstr "K. Trading & Importing Corporation. All Rights Reserved."
+
+msgid "الجمهورية اليمنية"
+msgstr "Republic of Yemen"
+
+# Home Page
+msgid "هل أنت مستعد للبدء؟"
+msgstr "Are You Ready to Start?"
+
+msgid "تواصل معنا اليوم واكتشف كيف يمكننا مساعدتك"
+msgstr "Contact us today and discover how we can help you"
+
+msgid "تواصل معنا الآن"
+msgstr "Contact Us Now"
+
+msgid "شبكتنا العالمية"
+msgstr "Our Global Network"
+
+msgid "ميزاتنا التنافسية"
+msgstr "Our Competitive Advantages"
+
+msgid "خدماتنا"
+msgstr "Our Services"
+
+msgid "عرض جميع الخدمات"
+msgstr "View All Services"
+
+# About Page
+msgid "تعرف على مؤسسة الكتيع للتجارة والاستيراد"
+msgstr "Learn about K. Trading & Importing Corporation"
+
+msgid "رؤيتنا"
+msgstr "Our Vision"
+
+msgid "رسالتنا"
+msgstr "Our Mission"
+
+msgid "قيمنا الأساسية"
+msgstr "Our Core Values"
+
+msgid "نتميز بوجودنا الميداني في مراكز الثقل الاقتصادي"
+msgstr "We are distinguished by our field presence in economic centers"
+
+msgid "انضم إلى شركائنا حول العالم"
+msgstr "Join Our Partners Around the World"
+
+msgid "نحن نبحث دائماً عن فرص جديدة للتعاون والنمو"
+msgstr "We are always looking for new opportunities for cooperation and growth"
+
+msgid "ابدأ الشراكة الآن"
+msgstr "Start Partnership Now"
+
+# Services Page
+msgid "حلول توريد نوعية تتجاوز التوقعات"
+msgstr "Quality supply solutions that exceed expectations"
+
+msgid "ما نقدمه"
+msgstr "What We Offer"
+
+msgid "لا توجد خدمات متاحة حالياً"
+msgstr "No services available at the moment"
+
+msgid "شراكاتنا الاستراتيجية"
+msgstr "Our Strategic Partnerships"
+
+msgid "نفخر بشراكاتنا مع أفضل الشركات العالمية"
+msgstr "We are proud of our partnerships with the best global companies"
+
+msgid "زيارة الموقع"
+msgstr "Visit Website"
+
+msgid "لماذا تختارنا؟"
+msgstr "Why Choose Us?"
+
+msgid "الرسمية والموثوقية"
+msgstr "Formality and Reliability"
+
+msgid "مؤسسة مسجلة تعمل وفق أرقى بروتوكولات التجارة الرسمية"
+msgstr "A registered institution operating according to the highest official trade protocols"
+
+msgid "الانتقائية الفائقة"
+msgstr "Superior Selectivity"
+
+msgid "نعتمد معايير صارمة في اختيار مصادر التوريد"
+msgstr "We adopt strict standards in selecting supply sources"
+
+msgid "الانتشار الجغرافي"
+msgstr "Geographic Spread"
+
+msgid "قوة ميدانية في اليمن وأمريكا والسعودية والإمارات"
+msgstr "Field presence in Yemen, America, Saudi Arabia, and UAE"
+
+msgid "هل تحتاج إلى خدماتنا؟"
+msgstr "Do You Need Our Services?"
+
+msgid "تواصل معنا اليوم للحصول على استشارة مجانية"
+msgstr "Contact us today for a free consultation"
+
+msgid "تحدث معنا"
+msgstr "Talk to Us"
+
+# Contact Page
+msgid "نحن هنا للإجابة على استفساراتكم"
+msgstr "We are here to answer your inquiries"
+
+msgid "أرسل لنا رسالة"
+msgstr "Send Us a Message"
+
+msgid "الاسم الكامل"
+msgstr "Full Name"
+
+msgid "البريد الإلكتروني"
+msgstr "Email"
+
+msgid "رقم الهاتف"
+msgstr "Phone Number"
+
+msgid "اسم الشركة (اختياري)"
+msgstr "Company Name (Optional)"
+
+msgid "الموضوع"
+msgstr "Subject"
+
+msgid "الرسالة"
+msgstr "Message"
+
+msgid "إرسال الرسالة"
+msgstr "Send Message"
+
+msgid "معلومات التواصل"
+msgstr "Contact Information"
+
+msgid "المقر الرئيسي"
+msgstr "Headquarters"
+
+msgid "فروعنا"
+msgstr "Our Branches"
+
+# Messages
+msgid "تم إرسال رسالتك بنجاح. سنتواصل معك قريباً."
+msgstr "Your message has been sent successfully. We will contact you soon."
+
+msgid "حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى."
+msgstr "An error occurred while sending the message. Please try again."
+
+msgid "تم الاشتراك في النشرة البريدية بنجاح."
+msgstr "Successfully subscribed to the newsletter."
+
+msgid "يرجى إدخال البريد الإلكتروني."
+msgstr "Please enter your email."

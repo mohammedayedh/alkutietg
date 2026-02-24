@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" style="background: linear-gradient(135deg, #0a1628 0%, #1a2332 50%, #0f1922 100%);">
+  <defs>
+    <!-- Gradients -->
+    <radialGradient id="yemenGlow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b8941f;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#8b6914;stop-opacity:0" />
+    </radialGradient>
+    
+    <linearGradient id="connectionGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#b8941f;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <!-- Filters for glow effects -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- World Map Base (Simplified continents) -->
+  <g opacity="0.15" fill="#2a3f5f" stroke="#3a5f7f" stroke-width="0.5">
+    <!-- Africa -->
+    <path d="M920,450 Q950,480 960,520 Q970,560 950,600 Q930,640 900,660 Q870,680 840,670 Q810,660 790,640 Q770,620 760,590 Q750,560 760,530 Q770,500 790,480 Q810,460 840,450 Q870,440 900,445 Q920,450 920,450 Z"/>
+    
+    <!-- Europe -->
+    <path d="M880,380 Q900,390 910,410 Q920,430 910,450 Q900,470 880,475 Q860,480 840,470 Q820,460 815,440 Q810,420 820,400 Q830,380 850,375 Q870,370 880,380 Z"/>
+    
+    <!-- Asia -->
+    <path d="M1050,400 Q1100,420 1140,450 Q1180,480 1200,520 Q1220,560 1210,600 Q1200,640 1170,660 Q1140,680 1100,670 Q1060,660 1030,640 Q1000,620 990,590 Q980,560 990,530 Q1000,500 1020,480 Q1040,460 1070,450 Q1100,440 1050,400 Z"/>
+    
+    <!-- North America -->
+    <path d="M400,350 Q450,370 480,400 Q510,430 520,470 Q530,510 510,550 Q490,590 460,610 Q430,630 390,620 Q350,610 330,580 Q310,550 310,510 Q310,470 330,440 Q350,410 380,390 Q410,370 400,350 Z"/>
+    
+    <!-- South America -->
+    <path d="M550,600 Q570,620 580,650 Q590,680 580,710 Q570,740 550,760 Q530,780 500,780 Q470,780 450,760 Q430,740 425,710 Q420,680 430,650 Q440,620 460,605 Q480,590 510,595 Q540,600 550,600 Z"/>
+  </g>
+  
+  <!-- Connection Lines with Particles -->
+  <!-- Yemen to USA -->
+  <g opacity="0.7">
+    <path d="M920,520 Q660,420 450,480" fill="none" stroke="url(#connectionGold)" stroke-width="2" filter="url(#glow)" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="-10" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Particles -->
+    <circle r="3" fill="#d4af37" filter="url(#glow)">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M920,520 Q660,420 450,480"/>
+    </circle>
+    <circle r="2" fill="#b8941f" filter="url(#glow)">
+      <animateMotion dur="4s" begin="1s" repeatCount="indefinite" path="M920,520 Q660,420 450,480"/>
+    </circle>
+  </g>
+  
+  <!-- Yemen to Saudi Arabia -->
+  <g opacity="0.7">
+    <path d="M920,520 Q900,490 880,470" fill="none" stroke="url(#connectionGold)" stroke-width="2" filter="url(#glow)" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="-10" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <circle r="3" fill="#d4af37" filter="url(#glow)">
+      <animateMotion dur="3s" repeatCount="indefinite" path="M920,520 Q900,490 880,470"/>
+    </circle>
+  </g>
+  
+  <!-- Yemen to UAE -->
+  <g opacity="0.7">
+    <path d="M920,520 Q950,510 980,500" fill="none" stroke="url(#connectionGold)" stroke-width="2" filter="url(#glow)" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="-10" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <circle r="3" fill="#d4af37" filter="url(#glow)">
+      <animateMotion dur="3s" repeatCount="indefinite" path="M920,520 Q950,510 980,500"/>
+    </circle>
+  </g>
+  
+  <!-- Location Markers -->
+  <!-- Yemen (Center - Gold) -->
+  <g filter="url(#strongGlow)">
+    <circle cx="920" cy="520" r="40" fill="url(#yemenGlow)" opacity="0.3">
+      <animate attributeName="r" values="40;50;40" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="920" cy="520" r="12" fill="#d4af37" stroke="#fff" stroke-width="2"/>
+    <circle cx="920" cy="520" r="6" fill="#fff"/>
+  </g>
+  
+  <!-- USA (Blue) -->
+  <g filter="url(#glow)">
+    <circle cx="450" cy="480" r="20" fill="#4a90e2" opacity="0.2">
+      <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="480" r="8" fill="#4a90e2" stroke="#fff" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Saudi Arabia (Green) -->
+  <g filter="url(#glow)">
+    <circle cx="880" cy="470" r="20" fill="#2ecc71" opacity="0.2">
+      <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="880" cy="470" r="8" fill="#2ecc71" stroke="#fff" stroke-width="1.5"/>
+  </g>
+  
+  <!-- UAE (White-Gold) -->
+  <g filter="url(#glow)">
+    <circle cx="980" cy="500" r="20" fill="#f0e68c" opacity="0.2">
+      <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="980" cy="500" r="8" fill="#f0e68c" stroke="#fff" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Ambient light effects -->
+  <circle cx="920" cy="520" r="150" fill="url(#yemenGlow)" opacity="0.1"/>
+  <circle cx="920" cy="520" r="100" fill="url(#yemenGlow)" opacity="0.15"/>
+</svg>

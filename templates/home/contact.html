@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load translation_tags %}
+
+{% block title %}{% trans 'تواصل معنا' %} - {% trans 'مؤسسة الكتيع' %}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="py-5" style="background: linear-gradient(135deg, #5A3A22, #B07A3F);">
+    <div class="container text-center text-white">
+        <h1 class="display-4 fw-bold">{% trans 'تواصل معنا' %}</h1>
+        <p class="lead">{% trans 'نحن هنا للإجابة على استفساراتكم' %}</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">{% trans 'أرسل لنا رسالة' %}</h3>
+                        <form method="post" action="{% url 'contact' %}">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">{% trans 'الاسم الكامل' %} *</label>
+                                    <input type="text" name="full_name" class="form-control" required style="padding: 0.75rem;">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{% trans 'البريد الإلكتروني' %} *</label>
+                                    <input type="email" name="email" class="form-control" required style="padding: 0.75rem;">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{% trans 'رقم الهاتف' %} *</label>
+                                    <input type="tel" name="phone" class="form-control" required style="padding: 0.75rem;">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{% trans 'اسم الشركة (اختياري)' %}</label>
+                                    <input type="text" name="company" class="form-control" style="padding: 0.75rem;">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">{% trans 'الموضوع' %} *</label>
+                                    <input type="text" name="subject" class="form-control" required style="padding: 0.75rem;">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">{% trans 'الرسالة' %} *</label>
+                                    <textarea name="message" class="form-control" rows="5" required style="padding: 0.75rem;"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                                        <i class="fas fa-paper-plane {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'إرسال الرسالة' %}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm mb-4" style="background: linear-gradient(135deg, #5A3A22, #B07A3F);">
+                    <div class="card-body p-4 text-white">
+                        <h4 class="mb-4" style="color: var(--bg-light);">{% trans 'معلومات التواصل' %}</h4>
+                        
+                        <div class="mb-4">
+                            <h6 class="mb-3" style="color: var(--bg-light);">
+                                <i class="fas fa-building {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'المقر الرئيسي' %}
+                            </h6>
+                            <p class="mb-0">{% trans 'الجمهورية اليمنية' %}</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="mb-3" style="color: var(--bg-light);">
+                                <i class="fas fa-phone {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'الهاتف' %}
+                            </h6>
+                            <p class="mb-2">
+                                <strong>{% trans 'اليمن' %}:</strong><br>
+                                <a href="tel:+967777794033" class="text-white" style="text-decoration: none; opacity: 0.95;">
+                                    +967 777 794 033
+                                </a>
+                            </p>
+                            <p class="mb-0">
+                                <strong>{% trans 'الولايات المتحدة' %}:</strong><br>
+                                <a href="tel:+15743005038" class="text-white" style="text-decoration: none; opacity: 0.95;">
+                                    +1 (574) 300-5038
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="mb-3" style="color: var(--bg-light);">
+                                <i class="fab fa-whatsapp {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'واتساب' %}
+                            </h6>
+                            <p class="mb-2">
+                                <a href="https://wa.me/967777794033" target="_blank" class="text-white" style="text-decoration: none; opacity: 0.95;">
+                                    <i class="fab fa-whatsapp {% if LANGUAGE_CODE == 'ar' %}me-1{% else %}ms-1{% endif %}"></i> +967 777 794 033
+                                </a>
+                            </p>
+                            <p class="mb-0">
+                                <a href="https://wa.me/15743005038" target="_blank" class="text-white" style="text-decoration: none; opacity: 0.95;">
+                                    <i class="fab fa-whatsapp {% if LANGUAGE_CODE == 'ar' %}me-1{% else %}ms-1{% endif %}"></i> +1 (574) 300-5038
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="mb-0">
+                            <h6 class="mb-3" style="color: var(--bg-light);">
+                                <i class="fas fa-globe {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'الأذرع الدولية:' %}
+                            </h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">• {% trans 'الولايات المتحدة الأمريكية' %}</li>
+                                <li class="mb-2">• {% trans 'المملكة العربية السعودية' %}</li>
+                                <li class="mb-2">• {% trans 'الإمارات العربية المتحدة' %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                {% if branches %}
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h5 class="mb-4">{% trans 'فروعنا' %}</h5>
+                        {% for branch in branches %}
+                        <div class="mb-3 pb-3 {% if not forloop.last %}border-bottom{% endif %}">
+                            <h6 style="color: var(--primary-color);">{% get_field branch 'name' %}</h6>
+                            <p class="small text-muted mb-1">
+                                <i class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% get_field branch 'city' %}، {% get_field branch 'country' %}
+                            </p>
+                            {% if branch.phone %}
+                            <p class="small text-muted mb-1">
+                                <i class="fas fa-phone {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{{ branch.phone }}
+                            </p>
+                            {% endif %}
+                            {% if branch.email %}
+                            <p class="small text-muted mb-0">
+                                <i class="fas fa-envelope {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{{ branch.email }}
+                            </p>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
