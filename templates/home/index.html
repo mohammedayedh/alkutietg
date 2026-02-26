@@ -7,7 +7,7 @@
 <!-- Hero Section -->
 <section class="hero-section position-relative" style="min-height: 600px; display: flex; align-items: center; overflow: hidden;">
     <!-- Video Background -->
-    <video id="heroVideo" autoplay muted loop playsinline class="hero-video">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" class="hero-video" style="opacity: 0; transition: opacity 0.5s ease-in;">
         <source src="/media/a_Create_a_premium_cor.mp4" type="video/mp4">
         متصفحك لا يدعم تشغيل الفيديو.
     </video>
@@ -222,9 +222,23 @@
         const video = document.getElementById('heroVideo');
         
         if (video) {
+            // إظهار الفيديو بسلاسة عندما يكون جاهزاً للتشغيل
+            video.addEventListener('canplaythrough', function() {
+                video.style.opacity = '1';
+            });
+            
+            // بدء التشغيل عندما يكون هناك بيانات كافية
+            video.addEventListener('loadeddata', function() {
+                if (video.readyState >= 3) {
+                    video.style.opacity = '1';
+                }
+            });
+            
             // تشغيل الفيديو عند التحميل
             video.play().catch(function(error) {
                 console.log('Video autoplay prevented:', error);
+                // إظهار الفيديو حتى لو لم يتم التشغيل التلقائي
+                video.style.opacity = '1';
             });
             
             // إعادة تشغيل الفيديو عند انتهائه (احتياطي)
@@ -243,6 +257,7 @@
             // إعادة التشغيل عند حدوث أي خطأ
             video.addEventListener('error', function() {
                 console.log('Video error, attempting to reload...');
+                video.style.opacity = '1'; // إظهار الفيديو حتى مع الخطأ
                 setTimeout(function() {
                     video.load();
                     video.play();
