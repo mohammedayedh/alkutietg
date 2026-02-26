@@ -18,16 +18,33 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+from django.http import HttpResponse
+from django.views.decorators.http import require_GET
 
 # تخصيص لوحة الإدارة
 admin.site.site_header = "مؤسسة الكتيع للتجارة والاستيراد"
 admin.site.site_title = "لوحة التحكم"
 admin.site.index_title = "إدارة الموقع"
 
+# Robots.txt view
+@require_GET
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "Disallow: /admin/",
+        "",
+        "Sitemap: https://alkutietg.com/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
+
 # المسارات العادية (بدون i18n مؤقتاً)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path('sitemap.xml', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml'), name='sitemap'),
+    path('robots.txt', robots_txt, name='robots'),
 ]
 
 # إضافة مسارات الملفات الثابتة والوسائط في وضع التطوير
