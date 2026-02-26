@@ -30,7 +30,7 @@ ENV/
 Thumbs.db
 
 # Environment variables
-.env
+# .env file is now tracked for deployment
 .env.local
 
 # Migrations (optional - uncomment if you want to ignore)
