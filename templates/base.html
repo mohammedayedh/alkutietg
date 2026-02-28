@@ -532,12 +532,10 @@
             opacity: 0.9;
         }
         
-        /* Language Toggle - Professional Design */
+        /* Language Toggle - Simple & Elegant */
         .language-toggle {
             position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
+            display: inline-block;
         }
         
         .language-toggle input[type="checkbox"] {
@@ -547,76 +545,58 @@
         .toggle-label {
             display: inline-flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            background: white;
             border-radius: 8px;
-            padding: 6px 8px;
+            padding: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            gap: 4px;
         }
         
         .toggle-label:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .toggle-inner {
             display: flex;
             align-items: center;
-            gap: 6px;
-            position: relative;
-            z-index: 2;
+            gap: 4px;
         }
         
         .lang-option {
             display: flex;
             align-items: center;
-            gap: 4px;
-            padding: 4px 10px;
+            justify-content: center;
+            padding: 6px 12px;
             border-radius: 6px;
             font-weight: 600;
             font-size: 13px;
             transition: all 0.3s ease;
-            color: rgba(255, 255, 255, 0.7);
-            position: relative;
-        }
-        
-        .lang-option i {
-            font-size: 14px;
-            opacity: 0.8;
+            color: #666;
+            min-width: 50px;
         }
         
         .lang-option.active {
-            background: white;
-            color: var(--primary-color);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-        
-        .lang-option.active i {
-            opacity: 1;
+            background: var(--primary-color);
+            color: white;
         }
         
         .lang-option:not(.active):hover {
-            color: rgba(255, 255, 255, 0.9);
+            background: #f5f5f5;
+            color: var(--primary-color);
         }
         
         /* Mobile adjustments */
         @media (max-width: 768px) {
             .toggle-label {
-                padding: 5px 6px;
+                padding: 3px;
             }
             
             .lang-option {
-                padding: 3px 8px;
+                padding: 5px 10px;
                 font-size: 12px;
-            }
-            
-            .lang-option i {
-                font-size: 12px;
+                min-width: 45px;
             }
         }
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -799,14 +779,8 @@
                             <input type="checkbox" id="languageSwitch" {% if LANGUAGE_CODE == 'en' %}checked{% endif %}>
                             <label for="languageSwitch" class="toggle-label">
                                 <span class="toggle-inner">
-                                    <span class="lang-option {% if LANGUAGE_CODE == 'ar' %}active{% endif %}">
-                                        <i class="fas fa-globe"></i>
-                                        <span>عربي</span>
-                                    </span>
-                                    <span class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}">
-                                        <i class="fas fa-globe"></i>
-                                        <span>EN</span>
-                                    </span>
+                                    <span class="lang-option {% if LANGUAGE_CODE == 'ar' %}active{% endif %}">عربي</span>
+                                    <span class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</span>
                                 </span>
                             </label>
                         </div>
