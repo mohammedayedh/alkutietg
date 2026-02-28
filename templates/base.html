@@ -532,10 +532,12 @@
             opacity: 0.9;
         }
         
-        /* Language Toggle Switch */
+        /* Language Toggle - Professional Design */
         .language-toggle {
             position: relative;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
         
         .language-toggle input[type="checkbox"] {
@@ -543,81 +545,80 @@
         }
         
         .toggle-label {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            width: 80px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-medium));
-            border-radius: 50px;
-            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 6px 8px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 3px 10px rgba(90, 58, 34, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
         }
         
         .toggle-label:hover {
-            box-shadow: 0 5px 15px rgba(90, 58, 34, 0.4);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
         
         .toggle-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            width: 100%;
-            padding: 0 8px;
+            gap: 6px;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
         
-        .lang-ar, .lang-en {
-            font-weight: 700;
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
             font-size: 13px;
             transition: all 0.3s ease;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
         }
         
-        .toggle-switch {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 30px;
-            height: 30px;
+        .lang-option i {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .lang-option.active {
             background: white;
-            border-radius: 50%;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
         
-        .toggle-switch::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            border-radius: 50%;
-            transition: all 0.3s ease;
+        .lang-option.active i {
+            opacity: 1;
         }
         
-        input[type="checkbox"]:checked + .toggle-label {
-            background: linear-gradient(135deg, var(--secondary-color), #D4A574);
+        .lang-option:not(.active):hover {
+            color: rgba(255, 255, 255, 0.9);
         }
         
-        input[type="checkbox"]:checked + .toggle-label .toggle-switch {
-            left: calc(100% - 33px);
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .toggle-label {
+                padding: 5px 6px;
+            }
+            
+            .lang-option {
+                padding: 3px 8px;
+                font-size: 12px;
+            }
+            
+            .lang-option i {
+                font-size: 12px;
+            }
         }
-        
-        input[type="checkbox"]:not(:checked) + .toggle-label .lang-ar {
-            color: white;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        input[type="checkbox"]:checked + .toggle-label .lang-en {
-            color: white;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
         
@@ -798,10 +799,15 @@
                             <input type="checkbox" id="languageSwitch" {% if LANGUAGE_CODE == 'en' %}checked{% endif %}>
                             <label for="languageSwitch" class="toggle-label">
                                 <span class="toggle-inner">
-                                    <span class="lang-ar">ع</span>
-                                    <span class="lang-en">EN</span>
+                                    <span class="lang-option {% if LANGUAGE_CODE == 'ar' %}active{% endif %}">
+                                        <i class="fas fa-globe"></i>
+                                        <span>عربي</span>
+                                    </span>
+                                    <span class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}">
+                                        <i class="fas fa-globe"></i>
+                                        <span>EN</span>
+                                    </span>
                                 </span>
-                                <span class="toggle-switch"></span>
                             </label>
                         </div>
                     </form>
