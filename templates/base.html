@@ -855,8 +855,8 @@
                             class="footer-logo {% if LANGUAGE_CODE == 'ar' %}me-3{% else %}ms-3{% endif %}">
                     </div>
                     <h5 class="text-secondary mb-3">{% trans 'مؤسسة الكتيع للتجارة والاستيراد' %}</h5>
-                    <p style="color: var(--bg-light); opacity: 0.9;">{% trans 'ريادة عالمية.. بجودة استثنائية' %}</p>
-                    <p class="small" style="opacity: 0.8;">{% trans 'من قلب اليمن، نصلكم بمنابع التجارة العالمية' %}</p>
+                    <p style="color: var(--white); opacity: 0.9;">{% trans 'ريادة عالمية.. بجودة استثنائية' %}</p>
+                    <p class="small text-white-50">{% trans 'من قلب اليمن، نصلكم بمنابع التجارة العالمية' %}</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h6 class="text-secondary mb-3">{% trans 'روابط سريعة' %}</h6>
@@ -871,9 +871,11 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <h6 class="text-secondary mb-3">{% trans 'تواصل معنا' %}</h6>
-                    <p class="small" style="opacity: 0.9;"><i
-                            class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
-                        trans 'المقر الرئيسي: الجمهورية اليمنية' %}</p>
+                    <p class="small" style="opacity: 0.9;">
+                        <i
+                            class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>
+                        {% trans 'المقر الرئيسي: الجمهورية اليمنية' %}
+                    </p>
 
                     <div class="mb-3">
                         <p class="small mb-2" style="opacity: 0.9;">
