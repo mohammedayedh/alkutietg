@@ -26,6 +26,7 @@ TRANSLATIONS = {
         'المملكة العربية السعودية': 'المملكة العربية السعودية',
         'الإمارات العربية المتحدة': 'الإمارات العربية المتحدة',
         'مؤسسة الكتيع للتجارة والاستيراد. جميع الحقوق محفوظة.': 'مؤسسة الكتيع للتجارة والاستيراد. جميع الحقوق محفوظة.',
+        'METRONEX GLOBAL. جميع الحقوق محفوظة.': 'METRONEX GLOBAL. جميع الحقوق محفوظة.',
         'الجمهورية اليمنية': 'الجمهورية اليمنية',
         
         # Home Page
@@ -113,6 +114,7 @@ TRANSLATIONS = {
         'المملكة العربية السعودية': 'Kingdom of Saudi Arabia',
         'الإمارات العربية المتحدة': 'United Arab Emirates',
         'مؤسسة الكتيع للتجارة والاستيراد. جميع الحقوق محفوظة.': 'K. Trading & Importing Corporation. All Rights Reserved.',
+        'METRONEX GLOBAL. جميع الحقوق محفوظة.': 'METRONEX GLOBAL. All Rights Reserved.',
         'الجمهورية اليمنية': 'Republic of Yemen',
         
         # Home Page

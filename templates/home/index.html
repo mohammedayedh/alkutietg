@@ -27,9 +27,12 @@
                 <p class="lead mb-5 text-white" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.4);" data-aos="fade-up"
                     data-aos-delay="200">{% get_field company 'about' %}</p>
                 {% else %}
-                <h1 class="display-3 fw-bold mb-4 text-white" style="text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">{% trans 'مؤسسة الكتيع للتجارة والاستيراد' %}</h1>
-                <h3 class="mb-4" style="color: var(--primary-gold); text-shadow: 1px 1px 5px rgba(0,0,0,0.2);">{% trans 'ريادة عالمية.. بجودة استثنائية' %}</h3>
-                <p class="lead mb-5 text-white" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">{% trans 'من قلب اليمن، نصلكم بمنابع التجارة العالمية' %}</p>
+                <h1 class="display-3 fw-bold mb-4 text-white" style="text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">{%
+                    trans 'مؤسسة الكتيع للتجارة والاستيراد' %}</h1>
+                <h3 class="mb-4" style="color: var(--primary-gold); text-shadow: 1px 1px 5px rgba(0,0,0,0.2);">{% trans
+                    'ريادة عالمية.. بجودة استثنائية' %}</h3>
+                <p class="lead mb-5 text-white" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">{% trans 'من قلب
+                    اليمن، نصلكم بمنابع التجارة العالمية' %}</p>
                 {% endif %}
                 <a href="{% url 'contact' %}" class="btn btn-gold btn-lg" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-envelope {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'تواصل معنا' %}
@@ -131,7 +134,7 @@
         <h2 class="mb-4" style="color: var(--primary-gold);">{% trans 'هل أنت مستعد للبدء؟' %}</h2>
         <p class="lead mb-4">{% trans 'تواصل معنا اليوم واكتشف كيف يمكننا مساعدتك' %}</p>
         <a href="{% url 'contact' %}" class="btn btn-gold btn-lg">
-            <i class="fas fa-phone {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'تواصل معناالآن' %}
+            <i class="fas fa-phone me-2"></i>{% trans 'تواصل معنا الآن' %}
         </a>
     </div>
 </section>
