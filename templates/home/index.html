@@ -35,7 +35,7 @@
                     اليمن، نصلكم بمنابع التجارة العالمية' %}</p>
                 {% endif %}
                 <a href="{% url 'contact' %}" class="btn btn-lg" data-aos="fade-up" data-aos-delay="300"
-                    style="background: var(--secondary-color); color: var(--primary-color); font-weight: 700; padding: 0.75rem 2.5rem; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                    style="background: white; color: var(--primary-color); font-weight: 600; padding: 0.75rem 2.5rem; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
                     <i class="fas fa-envelope {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans
                     'تواصل معنا' %}
                 </a>
@@ -48,57 +48,55 @@
 <section class="py-5 bg-light-custom">
     <div class="container">
         <h2 class="section-title text-center">{% trans 'شبكتنا العالمية' %}</h2>
-        <div class="row g-4 justify-content-center">
-
+        <div class="row g-4">
+            <!-- Main Branch -->
             <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                 <div class="card h-100 border-0 shadow-sm hover-card" style="background: white;">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
                             <i class="fas fa-building fa-3x" style="color: var(--primary-color);"></i>
                         </div>
-                        <h5 class="card-title" style="color: var(--primary-color);">{% trans 'المركز الرئيسي' %}</h5>
-                        <p class="text-muted mb-2">{% trans 'اليمن - صنعاء' %}</p>
+                        <h5 class="card-title" style="color: var(--primary-color);">Yemen - Sana'a</h5>
+                        <p class="text-muted mb-2">{% trans 'الفرع الرئيسي - Main' %}</p>
                     </div>
                 </div>
             </div>
-
+            <!-- B1 USA -->
             <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="card h-100 border-0 shadow-sm hover-card" style="background: white;">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
                             <i class="fas fa-map-marked-alt fa-3x" style="color: var(--secondary-color);"></i>
                         </div>
-                        <h5 class="card-title" style="color: var(--primary-color);">{% trans 'فرع الولايات المتحدة' %}
-                        </h5>
-                        <p class="text-muted mb-2">{% trans 'أمريكا - إنديانا' %}</p>
+                        <h5 class="card-title" style="color: var(--primary-color);">USA - Indiana</h5>
+                        <p class="text-muted mb-2">B1</p>
                     </div>
                 </div>
             </div>
-
+            <!-- B2 KSA -->
             <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
                 <div class="card h-100 border-0 shadow-sm hover-card" style="background: white;">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
-                            <i class="fas fa-map-marked-alt fa-3x" style="color: var(--secondary-color);"></i>
+                            <i class="fas fa-handshake fa-3x" style="color: var(--secondary-color);"></i>
                         </div>
-                        <h5 class="card-title" style="color: var(--primary-color);">{% trans 'فرع السعودية' %}</h5>
-                        <p class="text-muted mb-2">{% trans 'السعودية - الرياض' %}</p>
+                        <h5 class="card-title" style="color: var(--primary-color);">KSA - Riyadh</h5>
+                        <p class="text-muted mb-2">B2</p>
                     </div>
                 </div>
             </div>
-
+            <!-- B3 UAE -->
             <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
                 <div class="card h-100 border-0 shadow-sm hover-card" style="background: white;">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
-                            <i class="fas fa-map-marked-alt fa-3x" style="color: var(--secondary-color);"></i>
+                            <i class="fas fa-handshake fa-3x" style="color: var(--secondary-color);"></i>
                         </div>
-                        <h5 class="card-title" style="color: var(--primary-color);">{% trans 'فرع الإمارات' %}</h5>
-                        <p class="text-muted mb-2">{% trans 'الإمارات - دبي' %}</p>
+                        <h5 class="card-title" style="color: var(--primary-color);">UAE - Dubai</h5>
+                        <p class="text-muted mb-2">B3</p>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -159,10 +157,10 @@
 <!-- Call to Action -->
 <section class="py-5" style="background: var(--primary-color);">
     <div class="container text-center text-white">
-        <h2 class="mb-4">{% trans 'هل أنت مستعد للبدء؟' %}</h2>
-        <p class="lead mb-4">{% trans 'تواصل معنا اليوم واكتشف كيف يمكننا مساعدتك' %}</p>
+        <h2 class="mb-4 text-white">{% trans 'هل أنت مستعد للبدء؟' %}</h2>
+        <p class="lead mb-4 text-white">{% trans 'تواصل معنا اليوم واكتشف كيف يمكننا مساعدتك' %}</p>
         <a href="{% url 'contact' %}" class="btn btn-lg"
-            style="background: var(--secondary-color); color: var(--primary-color); font-weight: 700; padding: 0.75rem 2.5rem; border-radius: 6px;">
+            style="background: var(--secondary-color); color: var(--primary-color); font-weight: 600; padding: 0.75rem 2.5rem; border-radius: 6px;">
             <i class="fas fa-phone {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'تواصل معنا
             الآن' %}
         </a>
@@ -201,7 +199,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(22, 38, 63, 0.85);
+        background: linear-gradient(135deg, rgba(22, 38, 63, 0.85), rgba(198, 167, 94, 0.75));
         z-index: 1;
     }
 
@@ -224,7 +222,7 @@
         }
 
         .hero-overlay {
-            background: rgba(22, 38, 63, 0.85);
+            background: linear-gradient(135deg, rgba(22, 38, 63, 0.85), rgba(198, 167, 94, 0.75));
         }
 
         .hero-section {

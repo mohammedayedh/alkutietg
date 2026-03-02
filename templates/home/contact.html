@@ -7,8 +7,8 @@
 <!-- Page Header -->
 <section class="py-5" style="background: var(--primary-color);">
     <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold">{% trans 'تواصل معنا' %}</h1>
-        <p class="lead">{% trans 'نحن هنا للإجابة على استفساراتكم' %}</p>
+        <h1 class="display-4 fw-bold text-white">{% trans 'تواصل معنا' %}</h1>
+        <p class="lead text-white">{% trans 'نحن هنا للإجابة على استفساراتكم' %}</p>
     </div>
 </section>
 
@@ -144,40 +144,33 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
                         <h5 class="mb-4">{% trans 'فروعنا' %}</h5>
-
                         <div class="mb-3 pb-3 border-bottom">
-                            <h6 style="color: var(--primary-color);">{% trans 'المركز الرئيسي' %}</h6>
+                            <h6 style="color: var(--primary-color);">Yemen - Sana'a</h6>
                             <p class="small text-muted mb-1">
                                 <i
                                     class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
-                                trans 'صنعاء، اليمن' %}
+                                trans 'الفرع الرئيسي - Main' %}
                             </p>
                         </div>
-
                         <div class="mb-3 pb-3 border-bottom">
-                            <h6 style="color: var(--primary-color);">{% trans 'الولايات المتحدة' %}</h6>
+                            <h6 style="color: var(--primary-color);">USA - Indiana</h6>
                             <p class="small text-muted mb-1">
                                 <i
-                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
-                                trans 'إنديانا، أمريكا' %}
+                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>B1
                             </p>
                         </div>
-
                         <div class="mb-3 pb-3 border-bottom">
-                            <h6 style="color: var(--primary-color);">{% trans 'السعودية' %}</h6>
+                            <h6 style="color: var(--primary-color);">KSA - Riyadh</h6>
                             <p class="small text-muted mb-1">
                                 <i
-                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
-                                trans 'الرياض، السعودية' %}
+                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>B2
                             </p>
                         </div>
-
                         <div class="mb-3 pb-3">
-                            <h6 style="color: var(--primary-color);">{% trans 'الإمارات' %}</h6>
-                            <p class="small text-muted mb-0">
+                            <h6 style="color: var(--primary-color);">UAE - Dubai</h6>
+                            <p class="small text-muted mb-1">
                                 <i
-                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
-                                trans 'دبي، الإمارات' %}
+                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>B3
                             </p>
                         </div>
                     </div>

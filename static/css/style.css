@@ -1,11 +1,11 @@
 /* مؤسسة الكتيع للتجارة والاستيراد - ملف الأنماط الرئيسي */
 
 :root {
-    --primary-color: #16263F;
-    --primary-medium: #213A5E;
-    --secondary-color: #C6A75E;
-    --bg-light: #F4F4F4;
-    --text-dark: #2B2B2B;
+    --primary-color: #5A3A22;
+    --primary-medium: #7B5233;
+    --secondary-color: #B07A3F;
+    --bg-light: #F3EEE8;
+    --text-dark: #2E2E2E;
     --white: #ffffff;
 }
 
@@ -21,7 +21,7 @@ body {
 /* Navbar Styles */
 .navbar {
     background: var(--white);
-    box-shadow: 0 2px 10px rgba(22, 38, 63, 0.08);
+    box-shadow: 0 2px 10px rgba(90, 58, 34, 0.08);
     padding: 1rem 0;
     transition: all 0.3s;
 }
@@ -54,10 +54,10 @@ body {
 
 /* Button Styles */
 .btn-primary {
-    background: var(--secondary-color);
-    border: 1px solid var(--secondary-color);
-    color: var(--primary-color) !important;
-    font-weight: 700;
+    background: linear-gradient(135deg, #5A3A22, #B07A3F);
+    border: none;
+    color: var(--white);
+    font-weight: 600;
     padding: 0.75rem 2rem;
     transition: all 0.3s;
     border-radius: 6px;
@@ -65,10 +65,8 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(198, 167, 94, 0.4);
-    background: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    color: var(--secondary-color) !important;
+    box-shadow: 0 6px 20px rgba(176, 122, 63, 0.4);
+    background: linear-gradient(135deg, #7B5233, #B07A3F);
 }
 
 .btn-outline-primary {
@@ -116,7 +114,7 @@ body {
 }
 
 .card:hover {
-    box-shadow: 0 8px 25px rgba(22, 38, 63, 0.12);
+    box-shadow: 0 8px 25px rgba(90, 58, 34, 0.12);
 }
 
 .hover-card {
@@ -125,7 +123,7 @@ body {
 
 .hover-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(22, 38, 63, 0.15) !important;
+    box-shadow: 0 15px 40px rgba(90, 58, 34, 0.15) !important;
 }
 
 /* Footer Styles */
@@ -166,11 +164,14 @@ footer {
 
 /* Animations */
 @keyframes float {
-    0%, 100% { 
-        transform: translateY(0px); 
+
+    0%,
+    100% {
+        transform: translateY(0px);
     }
-    50% { 
-        transform: translateY(-20px); 
+
+    50% {
+        transform: translateY(-20px);
     }
 }
 
@@ -182,7 +183,7 @@ footer {
 .form-control,
 .form-select {
     border-radius: 6px;
-    border: 1px solid rgba(22, 38, 63, 0.2);
+    border: 1px solid rgba(90, 58, 34, 0.2);
     padding: 0.75rem 1rem;
     transition: all 0.3s;
 }
@@ -190,7 +191,7 @@ footer {
 .form-control:focus,
 .form-select:focus {
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 0.2rem rgba(198, 167, 94, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(176, 122, 63, 0.25);
 }
 
 .form-label {
@@ -206,7 +207,7 @@ footer {
 }
 
 .alert-success {
-    background: rgba(198, 167, 94, 0.1);
+    background: rgba(176, 122, 63, 0.1);
     color: var(--primary-color);
 }
 
@@ -221,15 +222,15 @@ footer {
     .navbar-brand {
         font-size: 1.2rem;
     }
-    
+
     .section-title {
         font-size: 1.75rem;
     }
-    
+
     .display-3 {
         font-size: 2.5rem;
     }
-    
+
     .display-4 {
         font-size: 2rem;
     }
@@ -240,14 +241,16 @@ footer {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 3px solid rgba(198, 167, 94, 0.3);
+    border: 3px solid rgba(176, 122, 63, 0.3);
     border-radius: 50%;
     border-top-color: var(--secondary-color);
     animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Smooth Scroll */

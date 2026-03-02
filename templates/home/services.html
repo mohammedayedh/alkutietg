@@ -7,8 +7,8 @@
 <!-- Page Header -->
 <section class="py-5" style="background: var(--primary-color);">
     <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold">{% trans 'خدماتنا' %}</h1>
-        <p class="lead">{% trans 'حلول توريد نوعية تتجاوز التوقعات' %}</p>
+        <h1 class="display-4 fw-bold text-white">{% trans 'خدماتنا' %}</h1>
+        <p class="lead text-white">{% trans 'حلول توريد نوعية تتجاوز التوقعات' %}</p>
     </div>
 </section>
 
@@ -123,10 +123,10 @@
 <!-- CTA -->
 <section class="py-5" style="background: var(--primary-color);">
     <div class="container text-center text-white">
-        <h2 class="mb-4">{% trans 'هل تحتاج إلى خدماتنا؟' %}</h2>
-        <p class="lead mb-4">{% trans 'تواصل معنا اليوم للحصول على استشارة مجانية' %}</p>
+        <h2 class="mb-4 text-white">{% trans 'هل تحتاج إلى خدماتنا؟' %}</h2>
+        <p class="lead mb-4 text-white">{% trans 'تواصل معنا اليوم للحصول على استشارة مجانية' %}</p>
         <a href="{% url 'contact' %}" class="btn btn-lg"
-            style="background: var(--secondary-color); color: var(--primary-color); font-weight: 700; padding: 0.75rem 2.5rem; border-radius: 6px;">
+            style="background: var(--secondary-color); color: var(--primary-color); font-weight: 600; padding: 0.75rem 2.5rem; border-radius: 6px;">
             <i class="fas fa-comments {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'تحدث
             معنا' %}
         </a>
