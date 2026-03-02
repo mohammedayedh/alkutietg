@@ -5,7 +5,7 @@
 
 {% block content %}
 <!-- Page Header -->
-<section class="py-5" style="background: linear-gradient(135deg, #5A3A22, #B07A3F);">
+<section class="py-5" style="background: var(--primary-color);">
     <div class="container text-center text-white">
         <h1 class="display-4 fw-bold">{% trans 'خدماتنا' %}</h1>
         <p class="lead">{% trans 'حلول توريد نوعية تتجاوز التوقعات' %}</p>
@@ -21,10 +21,13 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
                 <div class="card h-100 border-0 shadow-sm hover-card" style="background: white;">
                     {% if service.image %}
-                    <img src="{{ service.image.url }}" class="card-img-top" alt="{% get_field service 'title' %}" style="height: 250px; object-fit: cover;">
+                    <img src="{{ service.image.url }}" class="card-img-top" alt="{% get_field service 'title' %}"
+                        style="height: 250px; object-fit: cover;">
                     {% else %}
-                    <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 250px; background: var(--bg-light);">
-                        <i class="fas fa-{{ service.icon|default:'box' }} fa-5x" style="color: var(--primary-color);"></i>
+                    <div class="card-img-top d-flex align-items-center justify-content-center"
+                        style="height: 250px; background: var(--bg-light);">
+                        <i class="fas fa-{{ service.icon|default:'box' }} fa-5x"
+                            style="color: var(--primary-color);"></i>
                     </div>
                     {% endif %}
                     <div class="card-body p-4">
@@ -54,18 +57,22 @@
                 <div class="card h-100 border-0 shadow-sm text-center" style="background: white;">
                     <div class="card-body p-4">
                         {% if partnership.logo %}
-                        <img src="{{ partnership.logo.url }}" alt="{% get_field partnership 'name' %}" class="img-fluid mb-3" style="max-height: 100px;">
+                        <img src="{{ partnership.logo.url }}" alt="{% get_field partnership 'name' %}"
+                            class="img-fluid mb-3" style="max-height: 100px;">
                         {% else %}
                         <div class="mb-3">
                             <i class="fas fa-handshake fa-4x" style="color: var(--secondary-color);"></i>
                         </div>
                         {% endif %}
-                        <h5 class="card-title" style="color: var(--primary-color);">{% get_field partnership 'name' %}</h5>
+                        <h5 class="card-title" style="color: var(--primary-color);">{% get_field partnership 'name' %}
+                        </h5>
                         <p class="text-muted mb-2">{% get_field partnership 'country' %}</p>
                         <p class="small">{% get_field partnership 'description' %}</p>
                         {% if partnership.website %}
                         <a href="{{ partnership.website }}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">
-                            <i class="fas fa-external-link-alt {% if LANGUAGE_CODE == 'ar' %}me-1{% else %}ms-1{% endif %}"></i>{% trans 'زيارة الموقع' %}
+                            <i
+                                class="fas fa-external-link-alt {% if LANGUAGE_CODE == 'ar' %}me-1{% else %}ms-1{% endif %}"></i>{%
+                            trans 'زيارة الموقع' %}
                         </a>
                         {% endif %}
                     </div>
@@ -114,12 +121,14 @@
 </section>
 
 <!-- CTA -->
-<section class="py-5" style="background: linear-gradient(135deg, #5A3A22, #B07A3F);">
+<section class="py-5" style="background: var(--primary-color);">
     <div class="container text-center text-white">
         <h2 class="mb-4">{% trans 'هل تحتاج إلى خدماتنا؟' %}</h2>
         <p class="lead mb-4">{% trans 'تواصل معنا اليوم للحصول على استشارة مجانية' %}</p>
-        <a href="{% url 'contact' %}" class="btn btn-lg" style="background: white; color: var(--primary-color); font-weight: 600; padding: 0.75rem 2.5rem; border-radius: 6px;">
-            <i class="fas fa-comments {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'تحدث معنا' %}
+        <a href="{% url 'contact' %}" class="btn btn-lg"
+            style="background: var(--secondary-color); color: var(--primary-color); font-weight: 700; padding: 0.75rem 2.5rem; border-radius: 6px;">
+            <i class="fas fa-comments {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'تحدث
+            معنا' %}
         </a>
     </div>
 </section>
@@ -128,10 +137,10 @@
     .hover-card {
         transition: all 0.3s;
     }
-    
+
     .hover-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
     }
 </style>
 
