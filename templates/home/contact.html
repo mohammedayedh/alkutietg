@@ -5,10 +5,10 @@
 
 {% block content %}
 <!-- Page Header -->
-<section class="py-5" style="background: var(--primary-color);">
+<section class="py-5" style="background: var(--primary-navy); border-bottom: 4px solid var(--primary-gold);">
     <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold text-white">{% trans 'تواصل معنا' %}</h1>
-        <p class="lead text-white">{% trans 'نحن هنا للإجابة على استفساراتكم' %}</p>
+        <h1 class="display-4 fw-bold" style="color: var(--primary-gold);">{% trans 'تواصل معنا' %}</h1>
+        <p class="lead">{% trans 'نحن هنا للإجابة على استفساراتكم' %}</p>
     </div>
 </section>
 
@@ -67,12 +67,13 @@
 
             <!-- Contact Info -->
             <div class="col-lg-5">
-                <div class="card border-0 shadow-sm mb-4" style="background: var(--primary-color);">
+                <div class="card border-0 shadow-sm mb-4"
+                    style="background: var(--primary-navy); border-left: 5px solid var(--primary-gold);">
                     <div class="card-body p-4 text-white">
-                        <h4 class="mb-4" style="color: var(--bg-light);">{% trans 'معلومات التواصل' %}</h4>
+                        <h4 class="mb-4" style="color: var(--primary-gold);">{% trans 'معلومات التواصل' %}</h4>
 
                         <div class="mb-4">
-                            <h6 class="mb-3" style="color: var(--bg-light);">
+                            <h6 class="mb-3" style="color: var(--primary-gold);">
                                 <i
                                     class="fas fa-building {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
                                 trans 'المقر الرئيسي' %}
@@ -81,7 +82,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <h6 class="mb-3" style="color: var(--bg-light);">
+                            <h6 class="mb-3" style="color: var(--primary-gold);">
                                 <i
                                     class="fas fa-phone {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
                                 trans 'الهاتف' %}
@@ -103,7 +104,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <h6 class="mb-3" style="color: var(--bg-light);">
+                            <h6 class="mb-3" style="color: var(--primary-gold);">
                                 <i
                                     class="fab fa-whatsapp {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
                                 trans 'واتساب' %}
@@ -127,7 +128,7 @@
                         </div>
 
                         <div class="mb-0">
-                            <h6 class="mb-3" style="color: var(--bg-light);">
+                            <h6 class="mb-3" style="color: var(--primary-gold);">
                                 <i
                                     class="fas fa-globe {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
                                 trans 'الأذرع الدولية:' %}
@@ -141,40 +142,37 @@
                     </div>
                 </div>
 
+                {% if branches %}
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
                         <h5 class="mb-4">{% trans 'فروعنا' %}</h5>
-                        <div class="mb-3 pb-3 border-bottom">
-                            <h6 style="color: var(--primary-color);">Yemen - Sana'a</h6>
+                        {% for branch in branches %}
+                        <div class="mb-3 pb-3 {% if not forloop.last %}border-bottom{% endif %}">
+                            <h6 style="color: var(--primary-navy);">{% get_field branch 'name' %}</h6>
                             <p class="small text-muted mb-1">
                                 <i
                                     class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{%
-                                trans 'الفرع الرئيسي - Main' %}
+                                get_field branch 'city' %}، {% get_field branch 'country' %}
                             </p>
-                        </div>
-                        <div class="mb-3 pb-3 border-bottom">
-                            <h6 style="color: var(--primary-color);">USA - Indiana</h6>
+                            {% if branch.phone %}
                             <p class="small text-muted mb-1">
                                 <i
-                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>B1
+                                    class="fas fa-phone {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{{
+                                branch.phone }}
                             </p>
-                        </div>
-                        <div class="mb-3 pb-3 border-bottom">
-                            <h6 style="color: var(--primary-color);">KSA - Riyadh</h6>
-                            <p class="small text-muted mb-1">
+                            {% endif %}
+                            {% if branch.email %}
+                            <p class="small text-muted mb-0">
                                 <i
-                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>B2
+                                    class="fas fa-envelope {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{{
+                                branch.email }}
                             </p>
+                            {% endif %}
                         </div>
-                        <div class="mb-3 pb-3">
-                            <h6 style="color: var(--primary-color);">UAE - Dubai</h6>
-                            <p class="small text-muted mb-1">
-                                <i
-                                    class="fas fa-map-marker-alt {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>B3
-                            </p>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>

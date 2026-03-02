@@ -5,10 +5,10 @@
 
 {% block content %}
 <!-- Page Header -->
-<section class="py-5" style="background: var(--primary-color);">
+<section class="py-5" style="background: var(--primary-navy); border-bottom: 4px solid var(--primary-gold);">
     <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold text-white">{% trans 'خدماتنا' %}</h1>
-        <p class="lead text-white">{% trans 'حلول توريد نوعية تتجاوز التوقعات' %}</p>
+        <h1 class="display-4 fw-bold" style="color: var(--primary-gold);">{% trans 'خدماتنا' %}</h1>
+        <p class="lead">{% trans 'حلول توريد نوعية تتجاوز التوقعات' %}</p>
     </div>
 </section>
 
@@ -27,7 +27,7 @@
                     <div class="card-img-top d-flex align-items-center justify-content-center"
                         style="height: 250px; background: var(--bg-light);">
                         <i class="fas fa-{{ service.icon|default:'box' }} fa-5x"
-                            style="color: var(--primary-color);"></i>
+                            style="color: var(--primary-gold);"></i>
                     </div>
                     {% endif %}
                     <div class="card-body p-4">
@@ -61,7 +61,7 @@
                             class="img-fluid mb-3" style="max-height: 100px;">
                         {% else %}
                         <div class="mb-3">
-                            <i class="fas fa-handshake fa-4x" style="color: var(--secondary-color);"></i>
+                            <i class="fas fa-handshake fa-4x" style="color: var(--primary-gold);"></i>
                         </div>
                         {% endif %}
                         <h5 class="card-title" style="color: var(--primary-color);">{% get_field partnership 'name' %}
@@ -92,7 +92,7 @@
             <div class="col-md-4" data-aos="fade-up">
                 <div class="text-center p-4">
                     <div class="mb-3">
-                        <i class="fas fa-certificate fa-4x" style="color: var(--primary-color);"></i>
+                        <i class="fas fa-certificate fa-4x" style="color: var(--primary-navy);"></i>
                     </div>
                     <h5 style="color: var(--primary-color);">{% trans 'الرسمية والموثوقية' %}</h5>
                     <p class="text-muted">{% trans 'مؤسسة مسجلة تعمل وفق أرقى بروتوكولات التجارة الرسمية' %}</p>
@@ -101,7 +101,7 @@
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="text-center p-4">
                     <div class="mb-3">
-                        <i class="fas fa-star fa-4x" style="color: var(--secondary-color);"></i>
+                        <i class="fas fa-star fa-4x" style="color: var(--primary-gold);"></i>
                     </div>
                     <h5 style="color: var(--primary-color);">{% trans 'الانتقائية الفائقة' %}</h5>
                     <p class="text-muted">{% trans 'نعتمد معايير صارمة في اختيار مصادر التوريد' %}</p>
@@ -110,7 +110,7 @@
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="text-center p-4">
                     <div class="mb-3">
-                        <i class="fas fa-globe fa-4x" style="color: var(--primary-medium);"></i>
+                        <i class="fas fa-globe fa-4x" style="color: var(--gold-light);"></i>
                     </div>
                     <h5 style="color: var(--primary-color);">{% trans 'الانتشار الجغرافي' %}</h5>
                     <p class="text-muted">{% trans 'قوة ميدانية في اليمن وأمريكا والسعودية والإمارات' %}</p>
@@ -121,12 +121,11 @@
 </section>
 
 <!-- CTA -->
-<section class="py-5" style="background: var(--primary-color);">
+<section class="py-5" style="background: var(--primary-navy); border-top: 4px solid var(--primary-gold);">
     <div class="container text-center text-white">
-        <h2 class="mb-4 text-white">{% trans 'هل تحتاج إلى خدماتنا؟' %}</h2>
-        <p class="lead mb-4 text-white">{% trans 'تواصل معنا اليوم للحصول على استشارة مجانية' %}</p>
-        <a href="{% url 'contact' %}" class="btn btn-lg"
-            style="background: var(--secondary-color); color: var(--primary-color); font-weight: 600; padding: 0.75rem 2.5rem; border-radius: 6px;">
+        <h2 class="mb-4" style="color: var(--primary-gold);">{% trans 'هل تحتاج إلى خدماتنا؟' %}</h2>
+        <p class="lead mb-4">{% trans 'تواصل معنا اليوم للحصول على استشارة مجانية' %}</p>
+        <a href="{% url 'contact' %}" class="btn btn-gold btn-lg">
             <i class="fas fa-comments {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'تحدث
             معنا' %}
         </a>

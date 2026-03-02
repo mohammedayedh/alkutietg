@@ -5,10 +5,10 @@
 
 {% block content %}
 <!-- Page Header -->
-<section class="py-5" style="background: var(--primary-color);">
+<section class="py-5" style="background: var(--primary-navy); border-bottom: 4px solid var(--primary-gold);">
     <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold text-white">{% trans 'من نحن' %}</h1>
-        <p class="lead text-white">{% trans 'تعرف على مؤسسة الكتيع للتجارة والاستيراد' %}</p>
+        <h1 class="display-4 fw-bold" style="color: var(--primary-gold);">{% trans 'من نحن' %}</h1>
+        <p class="lead">{% trans 'تعرف على مؤسسة الكتيع للتجارة والاستيراد' %}</p>
     </div>
 </section>
 
@@ -46,7 +46,7 @@
                         <div class="mb-4">
                             <i class="fas fa-eye fa-4x" style="color: var(--primary-color);"></i>
                         </div>
-                        <h3 class="mb-4" style="color: var(--primary-color);">{% trans 'رؤيتنا' %}</h3>
+                        <h3 class="mb-4" style="color: var(--primary-navy);">{% trans 'رؤيتنا' %}</h3>
                         <p class="text-muted">{% get_field company 'vision' %}</p>
                     </div>
                 </div>
@@ -55,9 +55,9 @@
                 <div class="card h-100 border-0 shadow-sm" style="background: white;">
                     <div class="card-body p-5 text-center">
                         <div class="mb-4">
-                            <i class="fas fa-bullseye fa-4x" style="color: var(--secondary-color);"></i>
+                            <i class="fas fa-bullseye fa-4x" style="color: var(--primary-gold);"></i>
                         </div>
-                        <h3 class="mb-4" style="color: var(--primary-color);">{% trans 'رسالتنا' %}</h3>
+                        <h3 class="mb-4" style="color: var(--primary-navy);">{% trans 'رسالتنا' %}</h3>
                         <p class="text-muted">{% get_field company 'mission' %}</p>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <i class="fas fa-{{ value.icon|default:'check-circle' }} fa-3x"
-                                style="color: var(--secondary-color);"></i>
+                                style="color: var(--primary-gold);"></i>
                         </div>
                         <h5 class="card-title" style="color: var(--primary-color);">{% get_field value 'title' %}</h5>
                         <p class="card-text text-muted">{% get_field value 'description' %}</p>
@@ -93,72 +93,46 @@
 {% endif %}
 
 <!-- Global Network -->
-{% if True %}
+{% if branches %}
 <section class="py-5 bg-light-custom">
     <div class="container">
         <h2 class="section-title text-center">{% trans 'شبكتنا العالمية' %}</h2>
         <p class="text-center text-muted mb-5">{% trans 'نتميز بوجودنا الميداني في مراكز الثقل الاقتصادي' %}</p>
         <div class="row g-4">
-            <!-- Main Branch -->
-            <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="100">
+            {% for branch in branches %}
+            <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="{{ forloop.counter0|add:100 }}">
                 <div class="card h-100 border-0 shadow-sm text-center" style="background: white;">
                     <div class="card-body p-4">
                         <div class="mb-3">
-                            <i class="fas fa-building fa-3x" style="color: var(--primary-color);"></i>
+                            {% if branch.branch_type == 'main' %}
+                            <i class="fas fa-building fa-3x" style="color: var(--primary-navy);"></i>
+                            {% elif branch.branch_type == 'regional' %}
+                            <i class="fas fa-map-marked-alt fa-3x" style="color: var(--primary-gold);"></i>
+                            {% else %}
+                            <i class="fas fa-handshake fa-3x" style="color: var(--gold-light);"></i>
+                            {% endif %}
                         </div>
-                        <h5 class="card-title" style="color: var(--primary-color);">Yemen - Sana'a</h5>
-                        <p class="text-muted mb-2"><strong>{% trans 'الفرع الرئيسي - Main' %}</strong></p>
+                        <h5 class="card-title" style="color: var(--primary-color);">{% get_field branch 'name' %}</h5>
+                        <p class="text-muted mb-2"><strong>{% get_field branch 'country' %}</strong></p>
+                        <p class="small text-muted">{% get_field branch 'city' %}</p>
+                        {% if branch.description_ar %}
+                        <p class="small">{% get_field branch 'description' %}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            <!-- B1 USA -->
-            <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="200">
-                <div class="card h-100 border-0 shadow-sm text-center" style="background: white;">
-                    <div class="card-body p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-map-marked-alt fa-3x" style="color: var(--secondary-color);"></i>
-                        </div>
-                        <h5 class="card-title" style="color: var(--primary-color);">USA - Indiana</h5>
-                        <p class="text-muted mb-2"><strong>B1</strong></p>
-                    </div>
-                </div>
-            </div>
-            <!-- B2 KSA -->
-            <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="300">
-                <div class="card h-100 border-0 shadow-sm text-center" style="background: white;">
-                    <div class="card-body p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-handshake fa-3x" style="color: var(--secondary-color);"></i>
-                        </div>
-                        <h5 class="card-title" style="color: var(--primary-color);">KSA - Riyadh</h5>
-                        <p class="text-muted mb-2"><strong>B2</strong></p>
-                    </div>
-                </div>
-            </div>
-            <!-- B3 UAE -->
-            <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="400">
-                <div class="card h-100 border-0 shadow-sm text-center" style="background: white;">
-                    <div class="card-body p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-handshake fa-3x" style="color: var(--secondary-color);"></i>
-                        </div>
-                        <h5 class="card-title" style="color: var(--primary-color);">UAE - Dubai</h5>
-                        <p class="text-muted mb-2"><strong>B3</strong></p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 {% endif %}
 
 <!-- CTA Section -->
-<section class="py-5" style="background: var(--primary-color);">
+<section class="py-5" style="background: var(--primary-navy); border-top: 4px solid var(--primary-gold);">
     <div class="container text-center text-white">
-        <h2 class="mb-4 text-white">{% trans 'انضم إلى شركائنا حول العالم' %}</h2>
-        <p class="lead mb-4 text-white">{% trans 'نحن نبحث دائماً عن فرص جديدة للتعاون والنمو' %}</p>
-        <a href="{% url 'contact' %}" class="btn btn-lg"
-            style="background: var(--secondary-color); color: var(--primary-color); font-weight: 600; padding: 0.75rem 2.5rem; border-radius: 6px;">
+        <h2 class="mb-4" style="color: var(--primary-gold);">{% trans 'انضم إلى شركائنا حول العالم' %}</h2>
+        <p class="lead mb-4">{% trans 'نحن نبحث دائماً عن فرص جديدة للتعاون والنمو' %}</p>
+        <a href="{% url 'contact' %}" class="btn btn-gold btn-lg">
             <i class="fas fa-handshake {% if LANGUAGE_CODE == 'ar' %}me-2{% else %}ms-2{% endif %}"></i>{% trans 'ابدأ
             الشراكة الآن' %}
         </a>
