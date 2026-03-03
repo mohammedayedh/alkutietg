@@ -168,6 +168,8 @@ TRANSLATIONS = {
     }
 }
 
+from company.models import CompanyInfo
+
 def translate(text, language='ar'):
     """ترجمة النص حسب اللغة"""
     return TRANSLATIONS.get(language, {}).get(text, text)
@@ -182,8 +184,12 @@ def translations(request):
     
     def trans(text):
         return translate(text, language)
+        
+    # جلب معلومات الشركة للاستخدام في جميع القوالب (مثل الفوتر)
+    company_info = CompanyInfo.objects.first()
     
     return {
         'trans': trans,
         'LANGUAGE_CODE': language,
+        'company_info': company_info,
     }

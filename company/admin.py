@@ -14,6 +14,9 @@ class CompanyInfoAdmin(admin.ModelAdmin):
         ('الرؤية والرسالة', {
             'fields': ('vision_ar', 'vision_en', 'mission_ar', 'mission_en')
         }),
+        ('التواصل الاجتماعي', {
+            'fields': ('facebook_url', 'instagram_url', 'linkedin_url', 'x_url')
+        }),
     )
 
 @admin.register(Branch)

@@ -15,6 +15,12 @@ class CompanyInfo(models.Model):
     logo = models.ImageField(upload_to='company/', verbose_name="الشعار")
     hero_video = models.FileField(upload_to='videos/', blank=True, null=True, verbose_name="فيديو الصفحة الرئيسية")
     
+    # Social Media Links
+    facebook_url = models.URLField(max_length=200, blank=True, null=True, verbose_name="رابط فيسبوك")
+    instagram_url = models.URLField(max_length=200, blank=True, null=True, verbose_name="رابط إنستجرام")
+    linkedin_url = models.URLField(max_length=200, blank=True, null=True, verbose_name="رابط لينكد إن")
+    x_url = models.URLField(max_length=200, blank=True, null=True, verbose_name="رابط منصة إكس (تويتر)")
+    
     class Meta:
         verbose_name = "معلومات الشركة"
         verbose_name_plural = "معلومات الشركة"
