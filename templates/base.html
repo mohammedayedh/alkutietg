@@ -1087,6 +1087,11 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Elegant Floating Email Button -->
+    <a href="mailto:info@alkutietg.com" class="email-float-btn" title="{% trans 'راسلنا عبر البريد الإلكتروني' %}">
+        <i class="fas fa-envelope"></i>
+    </a>
+
     <style>
         .whatsapp-float-btn {
             position: fixed;
@@ -1153,6 +1158,39 @@
             }
         }
 
+        .email-float-btn {
+            position: fixed;
+            bottom: 105px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--gold-light));
+            color: var(--primary-navy);
+            border-radius: 50%;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0px 4px 15px rgba(198, 167, 94, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+
+        /* In LTR (English), position it on the right */
+        html[dir="ltr"] .email-float-btn {
+            left: auto;
+            right: 30px;
+        }
+
+        .email-float-btn:hover {
+            transform: scale(1.15) rotate(5deg);
+            background: var(--primary-navy);
+            color: var(--primary-gold);
+            box-shadow: 0px 6px 20px rgba(22, 38, 63, 0.4);
+        }
+
         /* Mobile adjustments */
         @media (max-width: 768px) {
             .whatsapp-float-btn {
@@ -1164,6 +1202,19 @@
             }
 
             html[dir="ltr"] .whatsapp-float-btn {
+                left: auto;
+                right: 20px;
+            }
+
+            .email-float-btn {
+                bottom: 85px;
+                left: 20px;
+                width: 52px;
+                height: 52px;
+                font-size: 24px;
+            }
+
+            html[dir="ltr"] .email-float-btn {
                 left: auto;
                 right: 20px;
             }
