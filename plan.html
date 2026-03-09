@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطة عمل مشروع ELKO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            direction: rtl;
+            text-align: right;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0;
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            direction: rtl;
+            text-align: right;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"].table-input,
+        input[type="number"].table-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-add-row {
+            background: #4caf50;
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        .btn-add-row:hover {
+            background: #45a049;
+        }
+
+        .btn-delete-row {
+            background: #f44336;
+            color: white;
+            padding: 6px 12px;
+            font-size: 0.85em;
+        }
+
+        .btn-delete-row:hover {
+            background: #da190b;
+        }
+
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box strong {
+            color: #667eea;
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .summary-box h4 {
+            margin-bottom: 10px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        .print-btn {
+            background: #2196F3;
+            color: white;
+        }
+
+        .print-btn:hover {
+            background: #0b7dda;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .btn-group {
+                display: none;
+            }
+
+            input, textarea, select {
+                border: none;
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>خطة عمل مشروع ELKO</h1>
+            <p>منتجات العناية الشخصية الطبيعية</p>
+        </div>
+
+        <div class="content">
+            <!-- 1. الملخص التنفيذي -->
+            <div class="section">
+                <h2>1. الملخص التنفيذي</h2>
+                
+                <div class="form-group">
+                    <label>الأهداف الرئيسية للمشروع</label>
+                    <textarea id="objectives" placeholder="أدخل الأهداف الرئيسية هنا...">إطلاق علامة تجارية يمنية لمنتجات العناية الشخصية الطبيعية بجودة عالية وأسعار تنافسية، مع تحقيق حصة سوقية قوية في المدن الكبرى اليمنية وتحقيق أرباح مستدامة.</textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>اسم المشروع</label>
+                        <input type="text" id="projectName" value="ELKO لمنتجات العناية الشخصية "               <div class="form-row">
+                    <div class="form-group">
+                        <label>رأس المال المطلوب (دولار)</label>
+                        <input type="number" id="capitalRequired" placeholder="أدخل المبلغ" value="100000">
+                    </div>
+                </div>               <div class="form-row">
+                    <div class="form-group">
+                        <label>فترة استرداد رأس المال المتوقعة (أشهر)</label>
+                        <input type="number" id="paybackPeriod" placeholder="أدخل الفترة">
+                    </div>
+                    <div class="form-group">
+                        <label>المنتجات الرئيسية</label>
+                        <input type="text" id="mainProducts" placeholder="شامبو، لوشن جسم، جل استحمام">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>السوق المستهدف</label>
+                    <textarea id="targetMarket" placeholder="أدخل المدن والأسواق المستهدفة...">صنعاء (أكبر سوق استهلاكي)، عدن (مركز تجاري وميناء رئيسي)، تعز، إب، الحديدة، حضرموت (المكلا)</textarea>
+                </div>
+            </div>
+
+            <!-- 2. وصف الشركة -->
+            <div class="section">
+                <h2>2. وصف الشركة</h2>
+
+                <h3>2.1 الرؤية</h3>
+                <div class="form-group">
+                    <textarea id="vision" placeholder="أدخل رؤية الشركة...">أن نكون العلامة التجارية الرائدة في اليمن لمنتجات العناية الشخصية الطبيعية، المعروفة بجودتها العالية وفعاليتها وتوفرها بأسعار معقولة.</textarea>
+                </div>
+
+                <h3>2.2 الرسالة</h3>
+                <div class="form-group">
+                    <textarea id="mission" placeholder="أدخل رسالة الشركة...">توفير منتجات عناية شخصية طبيعية وعالية الجودة تلبي احتياجات المستهلك اليمني، مع الالتزام بالمعايير العالمية والاستدامة والشفافية.</textarea>
+                </div>
+
+                <h3>2.3 القيم الأساسية</h3>
+                <div class="form-group">
+                    <textarea id="values" placeholder="أدخل القيم الأساسية (مثال: الجودة، الابتكار، الشفافية)...">الجودة العالية، الابتكار المستمر، الشفافية والأمانة، الاستدامة البيئية، رضا العملاء، المسؤولية الاجتماعية</textarea>
+                </div>
+
+                <h3>2.4 الهيكل القانوني</h3>
+                <div class="form-group">
+                    <input type="text" id="legalStructure" placeholder="مثال: مؤسسة فردية، شركة ذات مسؤولية محدودة" value="مؤسسة الكتيّع للتجارة والاستيراد">
+                </div>
+            </div>
+
+            <!-- 3. المنتجات والخدمات -->
+            <div class="section">
+                <h2>3. المنتجات والخدمات</h2>
+
+                <h3>3.1 وصف المنتجات</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المنتج</th>
+                                <th>الحجم المقترح</th>
+                                <th>المكونات الرئيسية</th>
+                                <th>الفوائد الرئيسية</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTable">
+                            <tr>
+                                <td><input type="text" class="table-input" value="شامبو طبيعي بزيت الأرجان"></td>
+                                <td><input type="text" class="table-input" value="400 مل"></td>
+                                <td><input type="text" class="table-input" value="زيت الأرجان، مكونات طبيعية"></td>
+                                <td><input type="text" class="table-input" value="تغذية الشعر، تقليل التساقط، لمعان طبيعي"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="لوشن جسم بزبدة الشيا"></td>
+                                <td><input type="text" class="table-input" value="400 مل"></td>
+                                <td><input type="text" class="table-input" value="زبدة الشيا، مكونات طبيعية"></td>
+                                <td><input type="text" class="table-input" value="ترطيب عميق، نعومة البشرة، رائحة جذابة"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="جل استحمام بالألوفيرا"></td>
+                                <td><input type="text" class="table-input" value="500 مل"></td>
+                                <td><input type="text" class="table-input" value="الألوفيرا، مكونات طبيعية"></td>
+                                <td><input type="text" class="table-input" value="تنظيف لطيف، انتعاش، ترطيب"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-add-row" onclick="addProductRow()">+ إضافة منتج</button>
+
+                <h3>3.2 الميزة التنافسية</h3>
+                <div class="form-group">
+                    <textarea id="competitiveAdvantage" placeholder="أدخل الميزة التنافسية...">الجودة العالية بأسعار تنافسية، مكونات طبيعية 100% خالية من المواد الكيميائية الضارة، تعبئة وتغليف جذاب وعصري، التركيز على احتياجات السوق اليمني المحددة، شهادات جودة دولية (GMP).</textarea>
+                </div>
+            </div>
+
+            <!-- 4. تحليل السوق -->
+            <div class="section">
+                <h2>4. تحليل السوق</h2>
+
+                <h3>4.1 حجم السوق والنمو</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>فترة استرداد رأس المال المتوقعة (أشهر)</label>
+                        <input type="number" id="paybackPeriod" placeholder="أدخل الفترة" value="4-6">
+                    </div>
+                    <div class="form-group">
+                        <label>المنتجات الرئيسية</label>
+                        <input type="text" id="mainProducts" placeholder="شامبو، لوشن جسم، جل استحمام" value="شامبو طبيعي بزيت الأرجان، لوشن جسم بزبدة الشيا، جل استحمام بالألوفيرا">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>الفرص الرئيسية في السوق</label>
+                    <textarea id="marketOpportunities" placeholder="أدخل الفرص..."></textarea>
+                </div>
+
+                <h3>4.2 العملاء المستهدفون</h3>
+                <div class="form-group">
+                    <label>التركيبة السكانية</label>
+                    <textarea id="demographics" placeholder="أدخل الفئة العمرية، الجنس، المستوى الاجتماعي..."></textarea>
+                </div>
+
+              
+
+                <h3>4.3 تحليل المنافسين</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المنافس</th>
+                                <th>المنتجات الرئيسية</th>
+                                <th>نقاط القوة</th>
+                                <th>نقاط الضعف</th>
+                                <th>الحصة السوقية (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="competitorsTable">
+                            <tr>
+                                <td><input type="text" class="table-input" placeholder="المنافس 1"></td>
+                                <td><input type="text" class="table-input" placeholder="المنتجات"></td>
+                                <td><input type="text" class="table-input" placeholder="نقاط القوة"></td>
+                                <td><input type="text" class="table-input" placeholder="نقاط الضعف"></td>
+                                <td><input type="number" class="table-input" placeholder="النسبة"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-add-row" onclick="addCompetitorRow()">+ إضافة منافس</button>
+
+                <h3>4.4 تحليل SWOT</h3>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>نقاط القوة (Strengths)</label>
+                        <textarea id="strengths" placeholder="أدخل نقاط القوة..."></textarea>
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>نقاط الضعف (Weaknesses)</label>
+                        <textarea id="weaknesses" placeholder="أدخل نقاط الضعف..."></textarea>
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>الفرص (Opportunities)</label>
+                        <textarea id="opportunities" placeholder="أدخل الفرص..."></textarea>
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>التهديدات (Threats)</label>
+                        <textarea id="threats" placeholder="أدخل التهديدات..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. الخطة التسويقية والمبيعات -->
+            <div class="section">
+                <h2>5. الخطة التسويقية والمبيعات</h2>
+
+                <h3>5.1 استراتيجية المنتج</h3>
+                <div class="form-group">
+                    <label>التعبئة والتغليف</label>
+                    <textarea id="packaging" placeholder="أدخل وصف التعبئة والتغليف..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>الجودة</label>
+                    <textarea id="quality" placeholder="أدخل معايير الجودة..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>الابتكار والتطوير</label>
+                    <textarea id="innovation" placeholder="أدخل خطط الابتكار المستقبلية..."></textarea>
+                </div>
+
+                <h3>5.2 استراتيجية التسعير</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>نموذج التسعير</label>
+                        <input type="text" id="pricingModel" placeholder="مثال: تسعير تنافسي">
+                    </div>
+                    <div class="form-group">
+                        <label>متوسط سعر البيع للوحدة (دولار)</label>
+                        <input type="number" id="unitPrice" placeholder="أدخل السعر">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>هامش الربح المستهدف (%)</label>
+                    <input type="number" id="profitMargin" placeholder="أدخل النسبة">
+                </div>
+
+                <h3>5.3 استراتيجية التوزيع</h3>
+                <div class="form-group">
+                    <label>قنوات التوزيع</label>
+                    <textarea id="distributionChannels" placeholder="أدخل القنوات (موزعي جملة، صيدليات، إلخ)..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>خطة التغطية</label>
+                    <textarea id="coveragePlan" placeholder="أدخل خطة التغطية الجغرافية..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>شروط الموزعين</label>
+                    <textarea id="distributorTerms" placeholder="أدخل شروط التعاقد مع الموزعين..."></textarea>
+                </div>
+
+                <h3>5.4 استراتيجية الترويج</h3>
+                <div class="form-group">
+                    <label>الإعلان</label>
+                    <textarea id="advertising" placeholder="أدخل قنوات الإعلان..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>العلاقات العامة</label>
+                    <textarea id="publicRelations" placeholder="أدخل أنشطة العلاقات العامة..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>الترويج للمبيعات</label>
+                    <textarea id="promotions" placeholder="أدخل أنشطة الترويج..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>التسويق الرقمي</label>
+                    <textarea id="digitalMarketing" placeholder="أدخل استراتيجية التسويق الرقمي..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>ميزانية التسويق الشهرية (دولار)</label>
+                        <input type="number" id="monthlyMarketingBudget" placeholder="أدخل الميزانية">
+                    </div>
+                    <div class="form-group">
+                        <label>ميزانية التسويق السنوية (دولار)</label>
+                        <input type="number" id="annualMarketingBudget" placeholder="أدخل الميزانية">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. الخطة التشغيلية -->
+            <div class="section">
+                <h2>6. الخطة التشغيلية</h2>
+
+                <h3>6.1 عمليات التصنيع</h3>
+                <div class="form-group">
+                    <label>المصنع المتعاقد معه</label>
+                    <input type="text" id="manufacturer" placeholder="أدخل اسم المصنع والموقع" value="مصنع حاصل على شهادة GMP في مصر">
+                </div>
+
+                <div class="form-group">
+                    <label>الشهادات والمعايير</label>
+                    <textarea id="certifications" placeholder="أدخل الشهادات (GMP, ISO, إلخ)...">شهادة GMP (Good Manufacturing Practice)، الالتزام بمعايير الجودة الطبيعية، شهادات تحليل لكل دفعة، معايير الجودة الدولية</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>عملية مراقبة الجودة</label>
+                    <textarea id="qualityControl" placeholder="أدخل تفاصيل عملية مراقبة الجودة...">اختبار العينات قبل الإنتاج الكمي، شهادات تحليل لكل دفعة، فحص الجودة والتغليف، الالتزام بمعايير الجودة الطبيعية، توفير عينات للاختبار قبل الإنتاج الكامل</textarea>
+                </div>
+
+                <h3>6.2 إدارة سلسلة التوريد</h3>
+                <div class="form-group">
+                    <label>الموردون الرئيسيون</label>
+                    <textarea id="suppliers" placeholder="أدخل أسماء الموردين الرئيسيين...">مصنع التصنيع لدى الغير في مصر، شركات الشحن المتخصصة، موردو المواد الخام الطبيعية</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>عملية الشحن والتخليص الجمركي</label>
+                    <textarea id="shippingProcess" placeholder="أدخل تفاصيل عملية الشحن...">شحن من مصر إلى اليمن عبر شركات شحن موثوقة، التخليص الجمركي من خلال وكلاء جمركيين متخصصين، توثيق كامل للعمليات والشهادات</textarea>
+                </div>
+
+                <h3>6.3 إدارة المخزون</h3>
+                <div class="form-group">
+                    <label>مستوى المخزون المستهدف</label>
+                    <input type="text" id="inventoryLevel" placeholder="مثال: مخزون يكفي لمدة شهرين">
+                </div>
+
+                <div class="form-group">
+                    <label>نظام إدارة المخزون</label>
+                    <input type="text" id="inventorySystem" placeholder="يدوي، برنامج ERP، إلخ">
+                </div>
+
+                <h3>6.4 الموقع والمرافق</h3>
+                <div class="form-group">
+                    <label>المستودعات</label>
+                    <textarea id="warehouses" placeholder="أدخل تفاصيل المستودعات..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>المكتب الإداري</label>
+                    <textarea id="office" placeholder="أدخل تفاصيل المكتب الإداري..."></textarea>
+                </div>
+            </div>
+
+
+            <!-- 8. الخطة المالية -->
+            <div class="section">
+                <h2>8. الخطة المالية</h2>
+
+                <h3>8.1 التكاليف الاستثمارية</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>البند</th>
+                                <th>التكلفة التقديرية (دولار)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="investmentCostsTable">
+                            <tr>
+                                <td><input type="text" class="table-input" value="تكلفة التصنيع الأولية"></td>
+                                <td><input type="number" class="table-input" value="35000"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="تصميم وهوية وتعبئة"></td>
+                                <td><input type="number" class="table-input" value="8000"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="شحن وتخليص جمركي"></td>
+                                <td><input type="number" class="table-input" value="10000"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="تسويق وإطلاق"></td>
+                                <td><input type="number" class="table-input" value="25000"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="تشغيل أولي ومستودعات"></td>
+                                <td><input type="number" class="table-input" value="7000"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="احتياطي طوارئ"></td>
+                                <td><input type="number" class="table-input" value="15000"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-add-row" onclick="addCostRow()">+ إضافة بند</button>
+
+                <h3>8.2 التكاليف التشغيلية الشهرية</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>البند</th>
+                                <th>التكلفة الشهرية (دولار)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="operatingCostsTable">
+                            <tr>
+                                <td><input type="text" class="table-input" value="تكلفة البضاعة المباعة (COGS)"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="رواتب وأجور"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="إيجار مستودعات/مكاتب"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="مصاريف تسويق مستمرة"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="مصاريف إدارية وعمومية"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-add-row" onclick="addOperatingCostRow()">+ إضافة بند</button>
+
+                <h3>8.3 توقعات المبيعات</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الفترة</th>
+                                <th>السنة 1 (دولار)</th>
+                                <th>السنة 2 (دولار)</th>
+                                <th>السنة 3 (دولار)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesForecastTable">
+                            <tr>
+                                <td><input type="text" class="table-input" value="إجمالي المبيعات"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>8.4 توقعات الأرباح والخسائر</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>البند</th>
+                                <th>السنة 1 (دولار)</th>
+                                <th>السنة 2 (دولار)</th>
+                                <th>السنة 3 (دولار)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="profitLossTable">
+                            <tr>
+                                <td><input type="text" class="table-input" value="إجمالي الإيرادات"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="تكلفة البضاعة المباعة"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="مجمل الربح"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="المصاريف التشغيلية"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="صافي الربح قبل الضرائب"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                                <td><input type="number" class="table-input" placeholder="0"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+           
+
+                <h3>8.6 فترة استرداد رأس المال</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>إجمالي الاستثمار الأولي (دولار)</label>
+                        <input type="number" id="totalInvestment" placeholder="0">
+                    </div>
+                    <div class="form-group">
+                        <label>متوسط صافي التدفق النقدي السنوي (دولار)</label>
+                        <input type="number" id="annualCashFlow" placeholder="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>فترة الاسترداد (بالأشهر/السنوات)</label>
+                    <input type="text" id="paybackCalculated" placeholder="0" readonly>
+                </div>
+
+                <h3>8.7 مصادر التمويل</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>المبلغ المطلوب (دولار)</label>
+                        <input type="number" id="fundingAmount" placeholder="0">
+                    </div>
+                    <div class="form-group">
+                        <label>شكل التمويل المقترح</label>
+                        <input type="text" id="fundingType" placeholder="قرض بنكي، استثمار، إلخ">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>الغرض من التمويل</label>
+                    <textarea id="fundingPurpose" placeholder="أدخل الغرض من التمويل..."></textarea>
+                </div>
+            </div>
+
+            <!-- 9. تحليل المخاطر -->
+            <div class="section">
+                <h2>9. تحليل المخاطر</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نوع الخطر</th>
+                                <th>الوصف</th>
+                                <th>الاحتمالية</th>
+                                <th>التأثير</th>
+                                <th>استراتيجيات التخفيف</th>
+                            </tr>
+                        </thead>
+                        <tbody id="risksTable">
+                            <tr>
+                                <td><input type="text" class="table-input" placeholder="مخاطر السوق"></td>
+                                <td><input type="text" class="table-input" placeholder="الوصف"></td>
+                                <td><input type="text" class="table-input" placeholder="منخفض/متوسط/مرتفع"></td>
+                                <td><input type="text" class="table-input" placeholder="منخفض/متوسط/مرتفع"></td>
+                                <td><input type="text" class="table-input" placeholder="الاستراتيجيات"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-add-row" onclick="addRiskRow()">+ إضافة خطر</button>
+            </div>
+
+            <!-- 10. الخطة الزمنية -->
+            <div class="section">
+                <h3>10. الخطة الزمنية (Timeline)</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المرحلة</th>
+                                <th>تاريخ البدء</th>
+                                <th>تاريخ الانتهاء</th>
+                                <th>المسؤول</th>
+                            </tr>
+                        </thead>
+                        <tbody id="timelineTable">
+                            <tr>
+                                <td><input type="text" class="table-input" value="دراسة السوق واختيار المصنع"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="text" class="table-input" placeholder="المسؤول"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="اعتماد العينات والتصميم"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="text" class="table-input" placeholder="المسؤول"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="بدء الإنتاج"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="text" class="table-input" placeholder="المسؤول"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="الشحن والتخليص الجمركي"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="text" class="table-input" placeholder="المسؤول"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="إطلاق المنتج في صنعاء وعدن"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="text" class="table-input" placeholder="المسؤول"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="table-input" value="التوسع للمدن الأخرى"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="date" class="table-input"></td>
+                                <td><input type="text" class="table-input" placeholder="المسؤول"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-add-row" onclick="addTimelineRow()">+ إضافة مرحلة</button>
+            </div>
+
+            <!-- أزرار الحفظ والطباعة -->
+            <div class="btn-group">
+                <button class="btn-primary" onclick="savePlan()">💾 حفظ ومشاركة الخطة</button>
+                <button class="btn-secondary print-btn" onclick="window.print()">🖨️ طباعة</button>
+                <button class="btn-secondary" onclick="downloadPlan()">⬇️ تحميل كـ JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // دالة إضافة صف جديد للمنتجات
+        function addProductRow() {
+            const table = document.getElementById('productsTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" class="table-input" placeholder="المنتج"></td>
+                <td><input type="text" class="table-input" placeholder="الحجم"></td>
+                <td><input type="text" class="table-input" placeholder="المكونات"></td>
+                <td><input type="text" class="table-input" placeholder="الفوائد"></td>
+            `;
+        }
+
+        // دالة إضافة صف جديد للمنافسين
+        function addCompetitorRow() {
+            const table = document.getElementById('competitorsTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" class="table-input" placeholder="المنافس"></td>
+                <td><input type="text" class="table-input" placeholder="المنتجات"></td>
+                <td><input type="text" class="table-input" placeholder="نقاط القوة"></td>
+                <td><input type="text" class="table-input" placeholder="نقاط الضعف"></td>
+                <td><input type="number" class="table-input" placeholder="النسبة"></td>
+            `;
+        }
+
+        // دالة إضافة عضو فريق
+        function addTeamRow() {
+            const table = document.getElementById('teamTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" class="table-input" placeholder="المنصب"></td>
+                <td><input type="text" class="table-input" placeholder="الاسم"></td>
+                <td><input type="text" class="table-input" placeholder="المؤهلات"></td>
+            `;
+        }
+
+        // دالة إضافة بند تكلفة
+        function addCostRow() {
+            const table = document.getElementById('investmentCostsTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" class="table-input" placeholder="البند"></td>
+                <td><input type="number" class="table-input" placeholder="0"></td>
+            `;
+        }
+
+        // دالة إضافة بند تكلفة تشغيلية
+        function addOperatingCostRow() {
+            const table = document.getElementById('operatingCostsTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" class="table-input" placeholder="البند"></td>
+                <td><input type="number" class="table-input" placeholder="0"></td>
+            `;
+        }
+
+        // دالة إضافة خطر
+        function addRiskRow() {
+            const table = document.getElementById('risksTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" class="table-input" placeholder="نوع الخطر"></td>
+                <td><input type="text" class="table-input" placeholder="الوصف"></td>
+                <td><input type="text" class="table-input" placeholder="الاحتمالية"></td>
+                <td><input type="text" class="table-input" placeholder="التأثير"></td>
+                <td><input type="text" class="table-input" placeholder="الاستراتيجيات"></td>
+            `;
+        }
+
+        // دالة إضافة مرحلة زمنية
+        function addTimelineRow() {
+            const table = document.getElementById('timelineTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" class="table-input" placeholder="المرحلة"></td>
+                <td><input type="date" class="table-input"></td>
+                <td><input type="date" class="table-input"></td>
+                <td><input type="text" class="table-input" placeholder="المسؤول"></td>
+            `;
+        }
+
+        // دالة حفظ الخطة في Local Storage ومشاركة HTML
+        function savePlan() {
+            try {
+                const formData = {};
+                
+                // جمع بيانات الحقول النصية
+                document.querySelectorAll('input[type="text"], input[type="number"], input[type="date"], textarea').forEach(element => {
+                    if (element.id) {
+                        formData[element.id] = element.value;
+                    }
+                });
+
+                // جمع بيانات الجداول
+                const tables = {
+                    products: getTableData('productsTable'),
+                    competitors: getTableData('competitorsTable'),
+                    team: getTableData('teamTable'),
+                    investmentCosts: getTableData('investmentCostsTable'),
+                    operatingCosts: getTableData('operatingCostsTable'),
+                    salesForecast: getTableData('salesForecastTable'),
+                    profitLoss: getTableData('profitLossTable'),
+                    risks: getTableData('risksTable'),
+                    timeline: getTableData('timelineTable')
+                };
+
+                localStorage.setItem('elkoPlan', JSON.stringify({...formData, tables}));
+                alert('تم حفظ الخطة بنجاح! 📁');
+                
+                // مشاركة ملف HTML
+                shareAsHTML();
+            } catch (error) {
+                console.error('خطأ في الحفظ:', error);
+                alert('حدث خطأ أثناء الحفظ: ' + error.message);
+            }
+        }
+
+        // دالة مشاركة الخطة كملف HTML
+        function shareAsHTML() {
+            try {
+                // الحصول على محتوى HTML الكامل للصفحة
+                const htmlContent = document.documentElement.outerHTML;
+                
+                // إنشاء Blob من محتوى HTML
+                const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+                
+                // التحقق من دعم Web Share API للملفات
+                if (navigator.share && typeof File !== 'undefined') {
+                    try {
+                        const file = new File([blob], 'ELKO_Business_Plan.html', { type: 'text/html' });
+                        
+                        // محاولة المشاركة
+                        navigator.share({
+                            title: 'خطة عمل مشروع ELKO',
+                            text: 'خطة عمل مشروع ELKO - منتجات العناية الشخصية الطبيعية',
+                            files: [file]
+                        })
+                        .then(() => {
+                            console.log('تمت المشاركة بنجاح');
+                        })
+                        .catch((error) => {
+                            console.log('خطأ في المشاركة:', error);
+                            // في حالة فشل المشاركة، نقوم بتحميل الملف
+                            downloadHTML(htmlContent);
+                        });
+                    } catch (e) {
+                        // إذا فشل إنشاء File، نقوم بالتحميل مباشرة
+                        downloadHTML(htmlContent);
+                    }
+                } else {
+                    // إذا لم يكن Web Share API مدعوماً، نقوم بتحميل الملف مباشرة
+                    downloadHTML(htmlContent);
+                }
+            } catch (error) {
+                console.error('خطأ في المشاركة:', error);
+                alert('حدث خطأ أثناء المشاركة: ' + error.message);
+            }
+        }
+
+        // دالة تحميل ملف HTML
+        function downloadHTML(htmlContent) {
+            try {
+                const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'ELKO_Business_Plan.html';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(url), 100);
+                alert('تم تحميل الملف! يمكنك الآن مشاركته 📤');
+            } catch (error) {
+                console.error('خطأ في التحميل:', error);
+                alert('حدث خطأ أثناء تحميل الملف: ' + error.message);
+            }
+        }
+
+        // دالة الحصول على بيانات الجدول
+        function getTableData(tableId) {
+            const table = document.getElementById(tableId);
+            if (!table) {
+                console.warn('Table not found:', tableId);
+                return [];
+            }
+            
+            const data = [];
+            const rows = table.querySelectorAll('tr');
+            
+            rows.forEach(row => {
+                const rowData = [];
+                row.querySelectorAll('input, textarea').forEach(input => {
+                    rowData.push(input.value || '');
+                });
+                if (rowData.length > 0) {
+                    data.push(rowData);
+                }
+            });
+            
+            return data;
+        }
+
+        // دالة تحميل الخطة من Local Storage
+        function loadPlan() {
+            const saved = localStorage.getItem('elkoPlan');
+            if (saved) {
+                const data = JSON.parse(saved);
+                
+                // استعادة الحقول
+                Object.keys(data).forEach(key => {
+                    if (key !== 'tables') {
+                        const element = document.getElementById(key);
+                        if (element) {
+                            element.value = data[key];
+                        }
+                    }
+                });
+
+                // استعادة بيانات الجداول
+                if (data.tables) {
+                    restoreTableData('productsTable', data.tables.products);
+                    restoreTableData('competitorsTable', data.tables.competitors);
+                    restoreTableData('teamTable', data.tables.team);
+                    restoreTableData('investmentCostsTable', data.tables.investmentCosts);
+                    restoreTableData('operatingCostsTable', data.tables.operatingCosts);
+                    restoreTableData('salesForecastTable', data.tables.salesForecast);
+                    restoreTableData('profitLossTable', data.tables.profitLoss);
+                    restoreTableData('risksTable', data.tables.risks);
+                    restoreTableData('timelineTable', data.tables.timeline);
+                }
+            }
+        }
+
+        // دالة استعادة بيانات الجدول
+        function restoreTableData(tableId, data) {
+            const table = document.getElementById(tableId);
+            if (!table) {
+                console.warn('Table not found for restore:', tableId);
+                return;
+            }
+            
+            if (!data || data.length === 0) {
+                return;
+            }
+            
+            table.innerHTML = '';
+            
+            data.forEach(rowData => {
+                const row = table.insertRow();
+                rowData.forEach(cellData => {
+                    const cell = row.insertCell();
+                    const safeData = cellData || '';
+                    if (safeData.includes('-') && safeData.length === 10) {
+                        cell.innerHTML = `<input type="date" class="table-input" value="${safeData}">`;
+                    } else if (!isNaN(safeData) && safeData !== '') {
+                        cell.innerHTML = `<input type="number" class="table-input" value="${safeData}">`;
+                    } else {
+                        cell.innerHTML = `<input type="text" class="table-input" value="${safeData}">`;
+                    }
+                });
+            });
+        }
+
+        // دالة تحميل الخطة كـ JSON
+        function downloadPlan() {
+            const formData = {};
+            
+            document.querySelectorAll('input[type="text"], input[type="number"], input[type="date"], textarea').forEach(element => {
+                if (element.id) {
+                    formData[element.id] = element.value;
+                }
+            });
+
+            const tables = {
+                products: getTableData('productsTable'),
+                competitors: getTableData('competitorsTable'),
+                team: getTableData('teamTable'),
+                investmentCosts: getTableData('investmentCostsTable'),
+                operatingCosts: getTableData('operatingCostsTable'),
+                salesForecast: getTableData('salesForecastTable'),
+                profitLoss: getTableData('profitLossTable'),
+                risks: getTableData('risksTable'),
+                timeline: getTableData('timelineTable')
+            };
+
+            const dataStr = JSON.stringify({...formData, tables}, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'ELKO_Business_Plan.json';
+            link.click();
+        }
+
+        // تحميل الخطة عند فتح الصفحة
+        window.addEventListener('load', loadPlan);
+
+        // حساب نقطة التعادل تلقائياً
+        document.getElementById('fixedCosts')?.addEventListener('input', calculateBreakEven);
+        document.getElementById('profitPerUnit')?.addEventListener('input', calculateBreakEven);
+
+        function calculateBreakEven() {
+            const fixedCosts = parseFloat(document.getElementById('fixedCosts').value) || 0;
+            const profitPerUnit = parseFloat(document.getElementById('profitPerUnit').value) || 0;
+
+            if (profitPerUnit > 0) {
+                const breakEvenUnits = Math.ceil(fixedCosts / profitPerUnit);
+                const breakEvenDollar = breakEvenUnits * profitPerUnit;
+                
+                document.getElementById('breakEvenUnits').value = breakEvenUnits;
+                document.getElementById('breakEvenDollar').value = breakEvenDollar.toFixed(2);
+            }
+        }
+
+        // حساب فترة الاسترداد تلقائياً
+        document.getElementById('totalInvestment')?.addEventListener('input', calculatePayback);
+        document.getElementById('annualCashFlow')?.addEventListener('input', calculatePayback);
+
+        function calculatePayback() {
+            const investment = parseFloat(document.getElementById('totalInvestment').value) || 0;
+            const cashFlow = parseFloat(document.getElementById('annualCashFlow').value) || 0;
+
+            if (cashFlow > 0) {
+                const years = investment / cashFlow;
+                const months = Math.round((years % 1) * 12);
+                const wholeYears = Math.floor(years);
+                
+                document.getElementById('paybackCalculated').value = 
+                    wholeYears > 0 ? `${wholeYears} سنة و ${months} شهر` : `${Math.round(years * 12)} شهر`;
+            }
+        }
+    </script>
+</body>
+</html>
